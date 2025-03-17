@@ -1,0 +1,72 @@
+-- Xóa database nếu tồn tại (nếu cần)
+DROP DATABASE IF EXISTS WEBPROGRAMMING;
+
+-- Tạo database
+CREATE DATABASE WEBPROGRAMMING;
+USE WEBPROGRAMMING;
+
+-- Tạo bảng Admin
+CREATE TABLE Admin (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    email VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
+    password VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    date DATE NOT NULL
+) ENGINE=InnoDB;
+
+-- Tạo bảng Template
+CREATE TABLE Template (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    date DATE NOT NULL,
+    admin_id INT NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES Admin(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Tạo bảng User
+CREATE TABLE User (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    email VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
+    password VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    date DATE NOT NULL,
+    admin_id INT NOT NULL,
+    default_cv_content_id INT NULL,
+    FOREIGN KEY (admin_id) REFERENCES Admin(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Tạo bảng CV
+CREATE TABLE CV (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    template_id INT NOT NULL,
+    date DATE NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (template_id) REFERENCES Template(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Tạo bảng CV_content
+CREATE TABLE CV_content (
+    cv_content_id INT PRIMARY KEY AUTO_INCREMENT,
+    CV_id INT NOT NULL,
+    Name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Image VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Contact_information TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Introduction TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Career_goal VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+    Experience TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Educational_level VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Skills TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Certificates VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Titles VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Awards VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Additional_information TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+    Recommender VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+    FOREIGN KEY (CV_id) REFERENCES CV(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Cập nhật khóa ngoại default_cv_content_id sau khi bảng CV_content đã tạo
+ALTER TABLE User
+ADD CONSTRAINT fk_user_cv_content
+FOREIGN KEY (default_cv_content_id) REFERENCES CV_content(cv_content_id) ON DELETE SET NULL;
