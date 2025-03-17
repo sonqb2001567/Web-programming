@@ -12,7 +12,7 @@ loginButton.addEventListener("click", function (e) {
     const password = passwordInput.value;
 
     // Kiểm tra thông tin đăng nhập
-    if (username === "0379997425" && password === "1234") {
+    if (username === "1" && password === "1") {
         // Nếu đúng, chuyển hướng đến trang lab2.html
         window.location.href = "../group 5_folder/index.html";
     } else {
