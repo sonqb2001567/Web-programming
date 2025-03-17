@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <!-- Liên kết file CSS -->
-    <link rel="stylesheet" href="../login/login.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <div class="wrapper">
-        <form action="#">
+        <form action="index.php" method="get">
             <h2>Login</h2>
             <!-- Input Field for Account -->
             <div class="input-field">
-                <input type="text" id="account" required>
                 <label for="account">Enter your account</label>
+                <input type="text" id="account" required>
             </div>
             <!-- Input Field for Password -->
             <div class="input-field">
@@ -36,6 +36,6 @@
             </div>
         </form>
     </div>
-    <script src="../login/login.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>

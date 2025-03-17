@@ -5,7 +5,12 @@
     $allowedPages = ['login', 'home', 'Formcv', 'product'];
 
     if (in_array($page, $allowedPages)) {
-        include("$page.html");
+        if ($page == 'login'){
+            include("$page.php");
+        } else {
+            include("$page.php");
+        }
+
     } else {
         include("404.html");
     }

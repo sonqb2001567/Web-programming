@@ -8,13 +8,18 @@ loginButton.addEventListener("click", function (e) {
     e.preventDefault();
 
     // Lấy giá trị người dùng nhập
-    const username = accountInput.value;
-    const password = passwordInput.value;
+    const username = accountInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!username || !password) {
+        alert("Please fill in both username and password.");
+        return;
+    }
 
     // Kiểm tra thông tin đăng nhập
     if (username === "1" && password === "1") {
-        // Nếu đúng, chuyển hướng đến trang lab2.html
-        window.location.href = "../group 5_folder/?page=home";
+        // Nếu đúng, chuyển hướng đến trang home.html với tham số truy vấn
+        window.location.href = `http://localhost:8080/Web-programming/?page=home`;
     } else {
         // Nếu sai, hiển thị thông báo lỗi
         alert("Invalid username or password. Please try again.");
