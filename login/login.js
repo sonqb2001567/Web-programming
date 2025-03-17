@@ -14,7 +14,7 @@ loginButton.addEventListener("click", function (e) {
     // Kiểm tra thông tin đăng nhập
     if (username === "1" && password === "1") {
         // Nếu đúng, chuyển hướng đến trang lab2.html
-        window.location.href = "../group 5_folder/index.html";
+        window.location.href = "../group 5_folder/?page=home";
     } else {
         // Nếu sai, hiển thị thông báo lỗi
         alert("Invalid username or password. Please try again.");
