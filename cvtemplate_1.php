@@ -1,3 +1,15 @@
+<?php
+    include("connection.php");
+    $cv_id =  isset($_GET['cvId']) ? (int)$_GET['cvId'] : 1;
+    $cvContentSql = "SELECT * FROM cv_content WHERE CV_id = $cv_id";
+    $cvContent = $conn->query($cvContentSql)->fetch_assoc();
+    if (empty($cvContent)) {
+        die("query Error: " . $conn->connect_error);
+    }
+
+
+?>
+
 <div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
     <div class="bg-secondary text-white w-50">  <!--Additional infor-->
         <div id="cv-element" class="mt-2">
@@ -131,7 +143,7 @@
     </div>
     <div class="text-black w-100 d-flex flex-column"> <!--main infor-->
         <div id="cv-element" class="fs-4">
-            <strong contenteditable="true">Phan Duc Son</strong>
+            <strong contenteditable="true"><?php echo htmlspecialchars( $cvContent["name"]);?></strong>
         </div>
         <div id="cv-element" class="fs-4">
             <strong contenteditable="true">Developer Fresher</strong>
