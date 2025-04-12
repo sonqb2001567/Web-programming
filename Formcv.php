@@ -71,24 +71,13 @@
 
         function tempPlateButtonClick() {
             let templateHolder = document.getElementById("templates-holder");
-            let b = document.getElementById("openholder-btn");
-
-            if (b.style.display === "block"){
-                b.style.display = "none"
-            }
 
             if (templateHolder.style.display === "none") {
                 templateHolder.style.display = "block";
             } 
         }
 
-        function tempPlateCloseButtonClick(){
-            let x = document.getElementById("templates-holder");
-            let b = document.getElementById("openholder-btn");
-
-            if (b.style.display === "none"){
-                b.style.display = "block"
-            }
+        function tempPlateCloseButtonClick(x){
             if (x.style.display === "block") {
                 x.style.display = "none";
             } 
