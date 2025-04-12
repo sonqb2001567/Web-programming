@@ -83,3 +83,9 @@ CREATE TABLE CV_content (
     reference_person TEXT NOT NULL,
     FOREIGN KEY (CV_id) REFERENCES CV(ID)
 );
+
+ALTER TABLE CV_content
+ADD CONSTRAINT fk_cv_content_cv
+    FOREIGN KEY (CV_id) REFERENCES CV(ID)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;

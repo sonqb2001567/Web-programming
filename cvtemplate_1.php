@@ -1,3 +1,10 @@
+<?php
+    include("connection.php");
+    $user_id =  isset($_GET['userId']) ? (int)$_GET['userId'] : 1;
+    $cvContentSql = "SELECT * FROM cv_content";
+    $cvContent = $conn->query($cvContentSql)
+?>
+
 <div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
     <div class="bg-secondary text-white w-50">  <!--Additional infor-->
         <div id="cv-element" class="mt-2">
