@@ -1,0 +1,160 @@
+-- 1. Tạo & sử dụng database
+DROP DATABASE IF EXISTS mycvdatabase;
+CREATE DATABASE IF NOT EXISTS MyCVDatabase;
+USE MyCVDatabase;
+
+-- 2. Bảng Admin
+CREATE TABLE Admin (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    name     VARCHAR(255) NOT NULL,
+    email    VARCHAR(255) NOT NULL,
+    pass     VARCHAR(255) NOT NULL,
+    date     DATE
+);
+
+-- 3. Bảng template
+CREATE TABLE template (
+    template_id INT AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(255) NOT NULL,
+    date        DATE,
+    admin_id    INT,
+    picture     VARCHAR(255),
+    CONSTRAINT fk_template_admin
+        FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+-- 4. Bảng User
+CREATE TABLE User (
+    user_id         INT AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(255) NOT NULL,
+    email           VARCHAR(255) NOT NULL,
+    pass            VARCHAR(255) NOT NULL,
+    admin_id        INT,
+    user_defaultcv  INT NULL,
+
+    CONSTRAINT fk_user_admin
+        FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+-- 5. Bảng CV
+CREATE TABLE CV (
+    ID          INT AUTO_INCREMENT PRIMARY KEY,
+    Name        VARCHAR(255) NOT NULL,
+    DATE_CV     DATE,
+    template_id INT,
+    user_id     INT,
+
+    CONSTRAINT fk_cv_template
+        FOREIGN KEY (template_id) REFERENCES template(template_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CONSTRAINT fk_cv_user
+        FOREIGN KEY (user_id) REFERENCES User(user_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 7. Bảng cv_content
+CREATE TABLE CV_content (
+    cv_content_id INT AUTO_INCREMENT PRIMARY KEY,
+    CV_id INT,
+    name VARCHAR(255) NOT NULL,
+    picture TEXT,
+    email VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL,
+    introduction TEXT NOT NULL,
+    career_goal TEXT,  -- optional
+    experience TEXT NOT NULL,
+    education TEXT NOT NULL,
+    skills TEXT NOT NULL,
+    certificates TEXT NOT NULL,
+    awards TEXT NOT NULL,
+    additional_info TEXT,  -- optional
+    reference_person TEXT NOT NULL,
+    FOREIGN KEY (CV_id) REFERENCES CV(ID)
+);
+
+ALTER TABLE CV_content
+ADD CONSTRAINT fk_cv_content_cv
+    FOREIGN KEY (CV_id) REFERENCES CV(ID)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+-- 6. Thêm FK user_defaultcv tham chiếu CV(ID)
+ALTER TABLE User
+ADD CONSTRAINT fk_user_defaultcv
+    FOREIGN KEY (user_defaultcv) REFERENCES CV(ID)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
+
+-- 1. Bảng Admin
+INSERT INTO Admin (name, email, pass, date) VALUES 
+('Nguyen Van A', 'admin1@example.com', 'pass1', '2025-04-12'),
+('Tran Thi B', 'admin2@example.com', 'pass2', '2025-04-12'),
+('Le Van C', 'admin3@example.com', 'pass3', '2025-04-12');
+
+-- 2. Bảng template
+INSERT INTO template (name, date, admin_id, picture) VALUES 
+('Template 1', '2025-04-12', 1, 'https://i.pinimg.com/736x/45/68/47/45684748d9a4c9adf6cdd3f958a10d7e.jpg'),
+('Template 2', '2025-04-12', 2, 'https://i.pinimg.com/736x/ed/1d/6b/ed1d6b44b28df0ac7ae98a4d4b5d2745.jpg'),
+('Template 3', '2025-04-12', 3, 'https://i.pinimg.com/736x/68/d6/4b/68d64b24261cee027fd135bb79dad9cf.jpg'),
+('Template 4', '2025-04-12', 1, 'image/template4.jpg'),
+('Template 5', '2025-04-12', 2, 'image/template5.jpg'),
+('Template 6', '2025-04-12', 3, 'image/template6.jpg');
+-- 3. Bảng User
+INSERT INTO User (name, email, pass, admin_id, user_defaultcv) VALUES
+('User 1', 'user1@example.com', 'password1', 1, NULL),
+('User 2', 'user2@example.com', 'password2', 2, NULL),
+('User 3', 'user3@example.com', 'password3', 3, NULL);
+
+-- 4. Bảng CV
+INSERT INTO CV (Name, DATE_CV, template_id, user_id) VALUES
+('CV 1', '2025-04-12', 1, 1),
+('CV 2', '2025-04-12', 2, 2),
+('CV 3', '2025-04-12', 3, 3);
+
+-- 5. Bảng cv_content
+INSERT INTO CV_content (
+    CV_id, name, picture, email, phone_number, introduction, career_goal,
+    experience, education, skills, certificates, awards, additional_info, reference_person
+) VALUES
+-- Dòng 1
+(1, 'Nguyễn Văn A', 'image/nguyenvana.jpg', 'a@gmail.com', '0901234567',
+ 'Tôi là một lập trình viên với đam mê công nghệ.', 
+ 'Trở thành kỹ sư phần mềm hàng đầu trong 5 năm tới.', 
+ '2 năm làm việc tại Công ty ABC, phát triển web.', 
+ 'Đại học Bách Khoa TP.HCM - Khoa CNTT',
+ 'C++, JavaScript, SQL', 
+ 'Chứng chỉ IELTS 7.0, Chứng chỉ Google Developer',
+ 'Top 5 sinh viên xuất sắc khoa CNTT', 
+ 'Tham gia nhiều hoạt động tình nguyện, thích đọc sách.',
+ 'Trần Văn B – Trưởng phòng kỹ thuật tại ABC'),
+
+-- Dòng 2
+(2, 'Trần Thị B', 'image/tranthib.jpg', 'b@gmail.com', '0912345678',
+ 'Tôi yêu thích việc giao tiếp và tổ chức sự kiện.', 
+ NULL, 
+ '1 năm làm Marketing tại Công ty XYZ', 
+ 'Đại học Kinh tế TP.HCM',
+ 'Giao tiếp, Photoshop, Quản lý thời gian', 
+ 'Chứng chỉ Facebook Ads, TOEIC 800',
+ 'Giải nhất Cuộc thi thuyết trình 2023', 
+ NULL,
+ 'Nguyễn Văn C – Giảng viên trường Đại học Kinh tế'),
+
+-- Dòng 3
+(3, 'Lê Văn C', 'image/levanc.jpg', 'c@gmail.com', '0987654321',
+ 'Sinh viên năm cuối với niềm đam mê học hỏi.', 
+ 'Tìm cơ hội thực tập tại công ty công nghệ uy tín.', 
+ 'Thực tập tại Công ty DEF, hỗ trợ phát triển mobile app', 
+ 'Đại học Công nghệ Thông tin - ĐHQG HCM',
+ 'Flutter, Dart, Git', 
+ 'MOS, Chứng chỉ Flutter từ Udemy',
+ 'Học bổng OISP 2 năm liên tiếp', 
+ 'Thành viên CLB Công nghệ UIT',
+ 'Phạm Thị D – Quản lý tuyển dụng tại DEF');
