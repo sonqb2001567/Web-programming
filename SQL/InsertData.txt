@@ -9,9 +9,9 @@ INSERT INTO template (name, date, admin_id, picture) VALUES
 ('Template 1', '2025-04-12', 1, 'https://i.pinimg.com/736x/45/68/47/45684748d9a4c9adf6cdd3f958a10d7e.jpg'),
 ('Template 2', '2025-04-12', 2, 'https://i.pinimg.com/736x/ed/1d/6b/ed1d6b44b28df0ac7ae98a4d4b5d2745.jpg'),
 ('Template 3', '2025-04-12', 3, 'https://i.pinimg.com/736x/68/d6/4b/68d64b24261cee027fd135bb79dad9cf.jpg'),
-('Template 4', '2025-04-12', 1, 'images/template4.jpg'),
-('Template 5', '2025-04-12', 2, 'images/template5.jpg'),
-('Template 6', '2025-04-12', 3, 'images/template6.jpg');
+('Template 4', '2025-04-12', 1, 'image/template4.jpg'),
+('Template 5', '2025-04-12', 2, 'image/template5.jpg'),
+('Template 6', '2025-04-12', 3, 'image/template6.jpg');
 -- 3. Bảng User
 INSERT INTO User (name, email, pass, admin_id, user_defaultcv) VALUES
 ('User 1', 'user1@example.com', 'password1', 1, NULL),
