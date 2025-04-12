@@ -1,5 +1,5 @@
 -- 1. Tạo & sử dụng database
-DROP DATABASE IF EXISTS mycvdatabase;
+DROP DATABASE IF EXISTS MyCVDatabase;
 CREATE DATABASE IF NOT EXISTS MyCVDatabase;
 USE MyCVDatabase;
 
@@ -59,14 +59,20 @@ CREATE TABLE CV (
         ON DELETE CASCADE
 );
 
+-- 6. Thêm FK user_defaultcv tham chiếu CV(ID)
+ALTER TABLE User
+ADD CONSTRAINT fk_user_defaultcv
+    FOREIGN KEY (user_defaultcv) REFERENCES CV(ID)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
+
 -- 7. Bảng cv_content
 CREATE TABLE CV_content (
     cv_content_id INT AUTO_INCREMENT PRIMARY KEY,
     CV_id INT,
     name VARCHAR(255) NOT NULL,
     picture TEXT,
-    email VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(255) NOT NULL,
+    contact_info TEXT NOT NULL,
     introduction TEXT NOT NULL,
     career_goal TEXT,  -- optional
     experience TEXT NOT NULL,
@@ -85,13 +91,9 @@ ADD CONSTRAINT fk_cv_content_cv
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
--- 6. Thêm FK user_defaultcv tham chiếu CV(ID)
-ALTER TABLE User
-ADD CONSTRAINT fk_user_defaultcv
-    FOREIGN KEY (user_defaultcv) REFERENCES CV(ID)
-    ON UPDATE CASCADE
-    ON DELETE SET NULL;
 
+
+USE MyCVDatabase;
 -- 1. Bảng Admin
 INSERT INTO Admin (name, email, pass, date) VALUES 
 ('Nguyen Van A', 'admin1@example.com', 'pass1', '2025-04-12'),
@@ -120,11 +122,11 @@ INSERT INTO CV (Name, DATE_CV, template_id, user_id) VALUES
 
 -- 5. Bảng cv_content
 INSERT INTO CV_content (
-    CV_id, name, picture, email, phone_number, introduction, career_goal,
+    CV_id, name, picture, contact_info, introduction, career_goal,
     experience, education, skills, certificates, awards, additional_info, reference_person
 ) VALUES
 -- Dòng 1
-(1, 'Nguyễn Văn A', 'image/nguyenvana.jpg', 'a@gmail.com', '0901234567',
+(1, 'Nguyễn Văn A', 'image/nguyenvana.jpg', 'Email: a@gmail.com, Phone: 0901234567',
  'Tôi là một lập trình viên với đam mê công nghệ.', 
  'Trở thành kỹ sư phần mềm hàng đầu trong 5 năm tới.', 
  '2 năm làm việc tại Công ty ABC, phát triển web.', 
@@ -136,7 +138,7 @@ INSERT INTO CV_content (
  'Trần Văn B – Trưởng phòng kỹ thuật tại ABC'),
 
 -- Dòng 2
-(2, 'Trần Thị B', 'image/tranthib.jpg', 'b@gmail.com', '0912345678',
+(2, 'Trần Thị B', 'image/tranthib.jpg', 'Email: b@gmail.com, Phone: 0912345678',
  'Tôi yêu thích việc giao tiếp và tổ chức sự kiện.', 
  NULL, 
  '1 năm làm Marketing tại Công ty XYZ', 
@@ -148,7 +150,7 @@ INSERT INTO CV_content (
  'Nguyễn Văn C – Giảng viên trường Đại học Kinh tế'),
 
 -- Dòng 3
-(3, 'Lê Văn C', 'image/levanc.jpg', 'c@gmail.com', '0987654321',
+(3, 'Lê Văn C', 'image/levanc.jpg', 'Email: c@gmail.com, Phone: 0987654321',
  'Sinh viên năm cuối với niềm đam mê học hỏi.', 
  'Tìm cơ hội thực tập tại công ty công nghệ uy tín.', 
  'Thực tập tại Công ty DEF, hỗ trợ phát triển mobile app', 
