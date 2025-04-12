@@ -17,6 +17,7 @@ CREATE TABLE template (
     name        VARCHAR(255) NOT NULL,
     date        DATE,
     admin_id    INT,
+    picture     VARCHAR(255),
     CONSTRAINT fk_template_admin
         FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
         ON UPDATE CASCADE
