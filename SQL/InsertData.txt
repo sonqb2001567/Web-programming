@@ -1,0 +1,31 @@
+-- 1. Bảng Admin
+INSERT INTO Admin (name, email, pass, date) VALUES 
+('Nguyen Van A', 'admin1@example.com', 'pass1', '2025-04-12'),
+('Tran Thi B', 'admin2@example.com', 'pass2', '2025-04-12'),
+('Le Van C', 'admin3@example.com', 'pass3', '2025-04-12');
+
+-- 2. Bảng template
+INSERT INTO template (name, date, admin_id, picture) VALUES 
+('Template 1', '2025-04-12', 1, 'https://i.pinimg.com/736x/45/68/47/45684748d9a4c9adf6cdd3f958a10d7e.jpg'),
+('Template 2', '2025-04-12', 2, 'https://i.pinimg.com/736x/ed/1d/6b/ed1d6b44b28df0ac7ae98a4d4b5d2745.jpg'),
+('Template 3', '2025-04-12', 3, 'https://i.pinimg.com/736x/68/d6/4b/68d64b24261cee027fd135bb79dad9cf.jpg'),
+('Template 4', '2025-04-12', 1, 'images/template4.jpg'),
+('Template 5', '2025-04-12', 2, 'images/template5.jpg'),
+('Template 6', '2025-04-12', 3, 'images/template6.jpg');
+-- 3. Bảng User
+INSERT INTO User (name, email, pass, admin_id, user_defaultcv) VALUES
+('User 1', 'user1@example.com', 'password1', 1, NULL),
+('User 2', 'user2@example.com', 'password2', 2, NULL),
+('User 3', 'user3@example.com', 'password3', 3, NULL);
+
+-- 4. Bảng CV
+INSERT INTO CV (Name, DATE_CV, template_id, user_id) VALUES
+('CV 1', '2025-04-12', 1, 1),
+('CV 2', '2025-04-12', 2, 2),
+('CV 3', '2025-04-12', 3, 3);
+
+-- 5. Bảng cv_content
+INSERT INTO cv_content (name, img, user_id, cv_id) VALUES
+('Content 1', 'images/content1.png', 1, 1),
+('Content 2', 'images/content2.png', 2, 2),
+('Content 3', 'images/content3.png', 3, 3);
