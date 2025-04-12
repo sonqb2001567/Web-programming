@@ -1,0 +1,84 @@
+-- 1. Tạo & sử dụng database
+CREATE DATABASE IF NOT EXISTS MyCVDatabase;
+USE MyCVDatabase;
+
+-- 2. Bảng Admin
+CREATE TABLE Admin (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    name     VARCHAR(255) NOT NULL,
+    email    VARCHAR(255) NOT NULL,
+    pass     VARCHAR(255) NOT NULL,
+    date     DATE
+);
+
+-- 3. Bảng template
+CREATE TABLE template (
+    template_id INT AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(255) NOT NULL,
+    date        DATE,
+    admin_id    INT,
+    CONSTRAINT fk_template_admin
+        FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+-- 4. Bảng User
+CREATE TABLE User (
+    user_id         INT AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(255) NOT NULL,
+    email           VARCHAR(255) NOT NULL,
+    pass            VARCHAR(255) NOT NULL,
+    admin_id        INT,
+    user_defaultcv  INT NULL,
+
+    CONSTRAINT fk_user_admin
+        FOREIGN KEY (admin_id) REFERENCES Admin(admin_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+-- 5. Bảng CV
+CREATE TABLE CV (
+    ID          INT AUTO_INCREMENT PRIMARY KEY,
+    Name        VARCHAR(255) NOT NULL,
+    DATE_CV     DATE,
+    template_id INT,
+    user_id     INT,
+
+    CONSTRAINT fk_cv_template
+        FOREIGN KEY (template_id) REFERENCES template(template_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CONSTRAINT fk_cv_user
+        FOREIGN KEY (user_id) REFERENCES User(user_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- 6. Thêm FK user_defaultcv tham chiếu CV(ID)
+ALTER TABLE User
+ADD CONSTRAINT fk_user_defaultcv
+    FOREIGN KEY (user_defaultcv) REFERENCES CV(ID)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
+
+-- 7. Bảng cv_content
+CREATE TABLE cv_content (
+    cv_content_id INT AUTO_INCREMENT PRIMARY KEY,
+    name          VARCHAR(255) NOT NULL,
+    img           VARCHAR(255),
+    user_id       INT,
+    cv_id         INT,
+
+    CONSTRAINT fk_cvcontent_user
+        FOREIGN KEY (user_id) REFERENCES User(user_id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+
+    CONSTRAINT fk_cvcontent_cv
+        FOREIGN KEY (cv_id) REFERENCES CV(ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
