@@ -66,20 +66,20 @@ ADD CONSTRAINT fk_user_defaultcv
     ON DELETE SET NULL;
 
 -- 7. Bảng cv_content
-CREATE TABLE cv_content (
+CREATE TABLE CV_content (
     cv_content_id INT AUTO_INCREMENT PRIMARY KEY,
-    name          VARCHAR(255) NOT NULL,
-    img           VARCHAR(255),
-    user_id       INT,
-    cv_id         INT,
-
-    CONSTRAINT fk_cvcontent_user
-        FOREIGN KEY (user_id) REFERENCES User(user_id)
-        ON UPDATE CASCADE
-        ON DELETE SET NULL,
-
-    CONSTRAINT fk_cvcontent_cv
-        FOREIGN KEY (cv_id) REFERENCES CV(ID)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
+    CV_id INT,
+    name VARCHAR(255) NOT NULL,
+    picture TEXT,
+    contact_info TEXT NOT NULL,
+    introduction TEXT NOT NULL,
+    career_goal TEXT,  -- optional
+    experience TEXT NOT NULL,
+    education TEXT NOT NULL,
+    skills TEXT NOT NULL,
+    certificates TEXT NOT NULL,
+    awards TEXT NOT NULL,
+    additional_info TEXT,  -- optional
+    reference_person TEXT NOT NULL,
+    FOREIGN KEY (CV_id) REFERENCES CV(ID)
 );

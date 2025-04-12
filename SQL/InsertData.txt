@@ -1,3 +1,4 @@
+USE MyCVDatabase;
 -- 1. Bảng Admin
 INSERT INTO Admin (name, email, pass, date) VALUES 
 ('Nguyen Van A', 'admin1@example.com', 'pass1', '2025-04-12'),
@@ -25,7 +26,43 @@ INSERT INTO CV (Name, DATE_CV, template_id, user_id) VALUES
 ('CV 3', '2025-04-12', 3, 3);
 
 -- 5. Bảng cv_content
-INSERT INTO cv_content (name, img, user_id, cv_id) VALUES
-('Content 1', 'images/content1.png', 1, 1),
-('Content 2', 'images/content2.png', 2, 2),
-('Content 3', 'images/content3.png', 3, 3);
+INSERT INTO CV_content (
+    CV_id, name, picture, contact_info, introduction, career_goal,
+    experience, education, skills, certificates, awards, additional_info, reference_person
+) VALUES
+-- Dòng 1
+(1, 'Nguyễn Văn A', 'images/nguyenvana.jpg', 'Email: a@gmail.com, Phone: 0901234567',
+ 'Tôi là một lập trình viên với đam mê công nghệ.', 
+ 'Trở thành kỹ sư phần mềm hàng đầu trong 5 năm tới.', 
+ '2 năm làm việc tại Công ty ABC, phát triển web.', 
+ 'Đại học Bách Khoa TP.HCM - Khoa CNTT',
+ 'C++, JavaScript, SQL', 
+ 'Chứng chỉ IELTS 7.0, Chứng chỉ Google Developer',
+ 'Top 5 sinh viên xuất sắc khoa CNTT', 
+ 'Tham gia nhiều hoạt động tình nguyện, thích đọc sách.',
+ 'Trần Văn B – Trưởng phòng kỹ thuật tại ABC'),
+
+-- Dòng 2
+(2, 'Trần Thị B', 'images/tranthib.jpg', 'Email: b@gmail.com, Phone: 0912345678',
+ 'Tôi yêu thích việc giao tiếp và tổ chức sự kiện.', 
+ NULL, 
+ '1 năm làm Marketing tại Công ty XYZ', 
+ 'Đại học Kinh tế TP.HCM',
+ 'Giao tiếp, Photoshop, Quản lý thời gian', 
+ 'Chứng chỉ Facebook Ads, TOEIC 800',
+ 'Giải nhất Cuộc thi thuyết trình 2023', 
+ NULL,
+ 'Nguyễn Văn C – Giảng viên trường Đại học Kinh tế'),
+
+-- Dòng 3
+(3, 'Lê Văn C', 'images/levanc.jpg', 'Email: c@gmail.com, Phone: 0987654321',
+ 'Sinh viên năm cuối với niềm đam mê học hỏi.', 
+ 'Tìm cơ hội thực tập tại công ty công nghệ uy tín.', 
+ 'Thực tập tại Công ty DEF, hỗ trợ phát triển mobile app', 
+ 'Đại học Công nghệ Thông tin - ĐHQG HCM',
+ 'Flutter, Dart, Git', 
+ 'MOS, Chứng chỉ Flutter từ Udemy',
+ 'Học bổng OISP 2 năm liên tiếp', 
+ 'Thành viên CLB Công nghệ UIT',
+ 'Phạm Thị D – Quản lý tuyển dụng tại DEF');
+
