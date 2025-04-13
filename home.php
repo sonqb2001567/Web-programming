@@ -1,3 +1,18 @@
+<?php
+
+    if (isset($_POST['trash_button'])) {
+        $cv_id = $_POST['trash_button'];
+
+        $sql = "DELETE FROM cv_content WHERE cv_id = $cv_id";
+        $result = $conn->query($sql);
+
+        $sql = "DELETE FROM cv WHERE ID = $cv_id";
+        $result = $conn->query($sql);
+
+    }
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,10 +75,18 @@
                             while($row = $result->fetch_assoc()) {
                                 ?>
                                 <!-- html zone -->
-                                <button class="custom-button2 col-6 col-sm-4 col-md-3 col-lg-2 text-center mb-4">
-                                    <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
-                                    <p class="small"><?php echo $row['Name'];?></p>
-                                </button>
+                                <div class="me-2 col-6 col-sm-4 col-md-3 col-lg-2 text-center mb-4 position-relative">
+                                    <form action="index.php" method="POST">
+                                        <button class="position-absolute top-0 start-100 translate-middle" style="border: none;"
+                                            id="trash_button" name="trash_button" value="<?php echo $row['ID'];?>">
+                                            <i class="fa-solid fa-trash" style="color: red;"></i>
+                                        </button>
+                                    </form>
+                                    <button class="custom-button2" >
+                                        <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
+                                        <p class="small"><?php echo $row['Name'];?></p>
+                                    </button>
+                                </div>
                                 <!-- end html zone -->
                                 <?php
                             // end while
