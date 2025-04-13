@@ -45,7 +45,8 @@
 <body>
     
     <?php
-    
+        
+
         if (in_array($page, $allowedPages)) {
             include("$page.php");            
         } else {

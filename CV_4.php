@@ -13,9 +13,6 @@
 
                     </head><body id="cv-content" class="bg-light d-flex justify-content-center position-relative">
     
-    
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Form</title>
@@ -457,9 +454,6 @@
         document.getElementById("save-form").submit();
     }
 </script>
-
-
-
 
 
 </body>
