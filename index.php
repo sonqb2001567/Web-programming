@@ -1,9 +1,12 @@
 <?php
+    session_start();
+    
     include("connection.php");
 
 
+
     #$page = $_GET['page']
-    $page = isset($_GET['page']) ? $_GET['page'] : 'login';
+    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
     $allowedPages = ['login', 'home', 'Formcv', 'product', 'submitionForm'];
 

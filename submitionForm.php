@@ -35,10 +35,12 @@
         VALUES ('$cv_content_name', '$cv_content_email', '$cv_content_phone_number', '$cv_content_introduction', '$cv_content_career_goal', '$cv_content_experience', '$cv_content_education', '$cv_content_skills', '$cv_content_certificates', '$cv_content_awards', '$cv_content_additional_info', '$cv_content_reference_person')
       ";
       $result = $conn->query($sql);
+
+
       if ($result) {
         echo "<script>
           alert('Submit successfully!');
-          window.location.href = 'http://localhost/btl/submitionForm.php';
+          window.location.href = 'http://localhost/btl/index.php?page=home';
         </script>";
       } else {
         echo "<script>
@@ -307,7 +309,7 @@
       </div>
   
   
-      <button type="submit" name="submit_cv_button" value="submit_cv_button" class="btn btn-success mt-4">Submit</button>
+      <button type="submit" name="submit_cv_button" value="submit_cv_button" class="btn btn-success my-4">Submit</button>
   
     </form>
     <!-- </div> -->
