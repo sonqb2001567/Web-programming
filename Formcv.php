@@ -42,7 +42,7 @@
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
     </form>
     <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="copyLinkClick()"> Share link</div>
+    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="copyLinkClick(<?php echo isset($_POST[''])?>)"> Share link</div>
 </body>
 
 <script>
