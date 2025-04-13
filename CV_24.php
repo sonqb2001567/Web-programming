@@ -220,7 +220,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">EDUCATION</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
