@@ -21,38 +21,9 @@
 
 </head>
 <body>
-    <div class="d-flex flex-row sticky-top justify-content-between p-2 shadow-sm" style="background-color: rgb(242, 244, 245);">
-        <!-- bar icon -->
-        <div class="d-inline-flex align-items-center">
-            <button type="button" class="custom-button btn btn-link text-dark mr-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <h1 class="h5 text-primary mb-0 ml-3">GROUP 5</h1>
-        </div>
-        <!-- hidden bar -->
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">GROUP 5</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <p>Try scrolling the rest of the page to see this option in action.</p>
-            <button>testing button</button>
-        </div>
-        </div>
-        <!-- hidden bar end -->
-        
-        <!-- search bar -->
-        <form action="" class="custom-search-bar d-flex align-items-center form-control rounded-pill w-50">
-            <span class="fa-solid fa-magnifying-glass"></span>
-            <input type="text" class="custom-tim-kiem" placeholder="Tìm kiếm">
-        </form>
-        <!-- user avatar -->
-        <div class="ml-3">
-            <!-- random image -->
-            <img src="https://storage.googleapis.com/a1aa/image/c6PvQ9PPnRYpm1iDHFMjd2U2SQnj6Of8HK_E7sOi04s.jpg" alt="User avatar" class="rounded-circle" width="40" height="40">
-        </div>
-    </div>
+    <?php
+        include('nav.php');
+    ?>
 
     <header style="background-color: rgb(242, 244, 245);">
 <!-- bộ currently template của user -->
@@ -77,7 +48,8 @@
                                 <!-- html zone -->
                                 <div class="me-2 col-6 col-sm-4 col-md-3 col-lg-2 text-center mb-4 position-relative">
                                     <form action="index.php" method="POST">
-                                        <button class="position-absolute top-0 start-100 translate-middle" style="border: none;"
+                                        <button class="position-absolute top-0 start-100 translate-middle" 
+                                                style="border: none; background-color: transparent;"
                                             id="trash_button" name="trash_button" value="<?php echo $row['ID'];?>">
                                             <i class="fa-solid fa-trash" style="color: red;"></i>
                                         </button>
@@ -132,15 +104,19 @@
                             ?>
                             <!-- html zone -->
 <!-- template -->
-                            <button class="custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 mb-4" id="<?php echo $row['template_id'];?>">
-                                <div class="card">
-                                    <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
-                                        <p class="card-text small text-muted"><?php echo $row['date'];?></p>
+                            <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
+                                <button class="custom-button3" id="<?php echo $row['template_id'];?>">
+                                    <div class="card">
+                                        <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
+                                        <div class="card-body">
+                                            <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
+                                            <p class="card-text small text-muted"><?php echo $row['date'];?></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
+                                </button>
+                                <input type="hidden" name="page" value="Formcv">
+                                <input type="hidden" id="template_id" name="template_id" value="<?php echo $row['template_id'];?>">
+                            </form>
 <!-- template -->
                             <!-- end html zone -->
                             <?php
@@ -165,7 +141,7 @@
 
 
 <!-- pagination -->
-        <div class="ms-3" style="position: relative;">
+        <div class="ms-3 mb-5" style="position: relative;">
             <section class="d-flex justify-content-center">
             <h4>Page: <?php echo $page_number?> of <?php echo $total_pages?> pages</h4>
             </section>
@@ -312,23 +288,54 @@
 
     </main>
 
-    <footer class="p-3" style="background-color: rgb(242, 244, 245);">
-        <div class="container">
-            <div class="d-flex flex-row justify-content-between align-items-center">
-                <p class="small text-muted">© 2025 Group 5</p>
-                <div class="d-flex flex-row">
-                    <a href="#" class="text-muted me-3">Privacy Policy</a>
-                    <a href="#" class="text-muted">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php
+        include('footer.php');
+    ?>
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="webAction/cvNavigation.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php

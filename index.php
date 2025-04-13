@@ -6,9 +6,10 @@
 
 
     #$page = $_GET['page']
+    // lay page type
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-    $allowedPages = ['login', 'home', 'Formcv', 'product', 'submitionForm'];
+    $allowedPages = ['login', 'logout', 'home', 'Formcv', 'product', 'submitionForm'];
 
     $starter = 0;
     $skip = 2; // number item per page
