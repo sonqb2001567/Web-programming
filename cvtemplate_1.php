@@ -1,26 +1,43 @@
 <?php
-    include("connection.php");
-    $cv_content_id =  isset($_GET['cvContentId']) ? (int)$_GET['cvContentId'] : 1;
-    $cvContentSql = "SELECT * FROM cv_content WHERE cv_content_id = $cv_content_id";
-    $cvContent = $conn->query($cvContentSql)->fetch_assoc();
-    if (empty($cvContent)) {
-        die("query Error: " . $conn->connect_error);
-    }
+    // Kết nối cơ sở dữ liệu (nếu chưa có)
+$svname = "localhost:3308";
+$user_svname = "root";
+$sv_password = "";
+$sv_dbname = "mycvdatabase";
 
-    $cvContent_name = $cvContent["name"];
-    $cvContent_picture = $cvContent["picture"];
-    $cvContent_email = $cvContent["email"];
-    $cvContent_phone_number = $cvContent["phone_number"];
-    $cvContent_introduction = $cvContent["introduction"];
-    $cvContent_career_goal = $cvContent["career_goal"];
-    $cvContent_experience = $cvContent["experience"];
-    $cvContent_education = $cvContent["education"];
-    $cvContent_skills = $cvContent["skills"];
-    $cvContent_certificates = $cvContent["certificates"];
-    $cvContent_awards = $cvContent["awards"];
-    $cvContent_additional_info = $cvContent["additional_info"];
-    $cvContent_reference_person = $cvContent["reference_person"];
+$conn = new mysqli($svname, $user_svname, $sv_password, $sv_dbname);
 
+if ($conn->connect_error) {
+    die("Kết nối thất bại: " . $conn->connect_error);
+}
+
+// Lấy dữ liệu từ bảng cv_content dựa trên cv_content_id
+$cv_content_id = isset($cv_content_id) ? $cv_content_id : 2; // Đã được truyền từ Formcv.php
+$cvContentSql = "SELECT * FROM cv_content WHERE cv_content_id = ?";
+$stmt = $conn->prepare($cvContentSql);
+$stmt->bind_param("i", $cv_content_id);
+$stmt->execute();
+$cvContent = $stmt->get_result()->fetch_assoc();
+if (empty($cvContent)) {
+    die("Không tìm thấy dữ liệu CV.");
+}
+
+$cvContent_name = $cvContent["name"] ?? "Chưa có dữ liệu";
+$cvContent_picture = $cvContent["picture"] ?? "https://via.placeholder.com/150";
+$cvContent_email = $cvContent["email"] ?? "Chưa có dữ liệu";
+$cvContent_phone_number = $cvContent["phone_number"] ?? "Chưa có dữ liệu";
+$cvContent_introduction = $cvContent["introduction"] ?? "Chưa có dữ liệu";
+$cvContent_career_goal = $cvContent["career_goal"] ?? "Chưa có dữ liệu";
+$cvContent_experience = $cvContent["experience"] ?? "Chưa có dữ liệu";
+$cvContent_education = $cvContent["education"] ?? "Chưa có dữ liệu";
+$cvContent_skills = $cvContent["skills"] ?? "Chưa có dữ liệu";
+$cvContent_certificates = $cvContent["certificates"] ?? "Chưa có dữ liệu";
+$cvContent_awards = $cvContent["awards"] ?? "Chưa có dữ liệu";
+$cvContent_additional_info = $cvContent["additional_info"] ?? "Chưa có dữ liệu";
+$cvContent_reference_person = $cvContent["reference_person"] ?? "Chưa có dữ liệu";
+
+$stmt->close();
+$conn->close();
 ?>
 
 <div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
