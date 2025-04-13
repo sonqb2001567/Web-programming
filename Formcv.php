@@ -41,8 +41,11 @@
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
     </form>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="copyLinkClick(<?php echo isset($_POST[''])?>)"> Share link</div>
+    <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick(<?php echo $_POST['']; ?>)"> Copy link</div> 
+    </div >
+    
 </body>
 
 <script>
@@ -108,7 +111,7 @@
     }
 
     function copyLinkClick() {
-        const link = "http://localhost:8080/Web-programming/CV_" + ".php"; 
+        const link = "http://localhost:8080/Web-programming/" + ".php"; 
     navigator.clipboard.writeText(link)
     }
 </script>

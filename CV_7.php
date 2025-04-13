@@ -13,6 +13,9 @@
 
                     </head><body id="cv-content" class="bg-light d-flex justify-content-center position-relative">
     
+    
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Form</title>
@@ -258,6 +261,47 @@
                             </p>
                         </div>
                     </div>
+                </div><div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                    <div id="button-holder_1744569241747" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
+                        <div id="btn-action-add_1744569241747" class="btn btn-success m-1 btn-sm" style="display: block;" onclick="duplicateSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Thêm</span>
+                        </div>
+                        <div id="btn-action-remove_1744569241747" class="btn btn-danger m-1 btn-sm" style="display: block;" onclick="removeSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Xóa</span>
+                        </div>
+                    </div>
+                    <div id="section-title_1744569241747" class="d-flex flex-row flex-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard align-self-center" viewBox="0 0 16 16">
+                            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"></path>
+                            <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"></path>
+                        </svg>
+                        <strong class="ms-2 fs-5" contenteditable="true">Đại học Bách Khoa TP.HCM - Khoa CNTT</strong>
+                        <div id="date_1744569241747" class="d-flex flex-row align-self-center">
+                            <div class="mx-2">from:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                            <div class="mx-2">to:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                        </div>
+                    </div>
+                    <div id="section-item_1744569241747">
+                        <div class="mt-2">
+                            <strong class="fs-6" contenteditable="true">Khoa Khoa Học - Kỹ Thuật Máy Tính</strong>
+                            <p contenteditable="true">
+    
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -298,6 +342,86 @@
                         </div>
                     </div>
                     <div id="section-item">
+                        <div class="mt-2">
+                            <strong class="fs-6" contenteditable="true">Khoa Khoa Học - Kỹ Thuật Máy Tính</strong>
+                            <p contenteditable="true">
+    
+                            </p>
+                        </div>
+                    </div>
+                </div><div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                    <div id="button-holder_1744569243051" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
+                        <div id="btn-action-add_1744569243051" class="btn btn-success m-1 btn-sm" style="display: block;" onclick="duplicateSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Thêm</span>
+                        </div>
+                        <div id="btn-action-remove_1744569243051" class="btn btn-danger m-1 btn-sm" style="display: block;" onclick="removeSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Xóa</span>
+                        </div>
+                    </div>
+                    <div id="section-title_1744569243051" class="d-flex flex-row flex-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase align-self-center" viewBox="0 0 16 16">
+                            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"></path>
+                        </svg>
+                        <strong class="ms-2 fs-5" contenteditable="true">2 năm làm việc tại Công ty ABC, phát triển web.</strong>
+                        <div id="date_1744569243051" class="d-flex flex-row align-self-center">
+                            <div class="mx-2">from:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                            <div class="mx-2">to:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                        </div>
+                    </div>
+                    <div id="section-item_1744569243051">
+                        <div class="mt-2">
+                            <strong class="fs-6" contenteditable="true">Khoa Khoa Học - Kỹ Thuật Máy Tính</strong>
+                            <p contenteditable="true">
+    
+                            </p>
+                        </div>
+                    </div>
+                </div><div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: dashed; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                    <div id="button-holder_1744569243051_1744569243841" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
+                        <div id="btn-action-add_1744569243051_1744569243841" class="btn btn-success m-1 btn-sm" style="display: block;" onclick="duplicateSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Thêm</span>
+                        </div>
+                        <div id="btn-action-remove_1744569243051_1744569243841" class="btn btn-danger m-1 btn-sm" style="display: block;" onclick="removeSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Xóa</span>
+                        </div>
+                    </div>
+                    <div id="section-title_1744569243051_1744569243841" class="d-flex flex-row flex-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase align-self-center" viewBox="0 0 16 16">
+                            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"></path>
+                        </svg>
+                        <strong class="ms-2 fs-5" contenteditable="true">2 năm làm việc tại Công ty ABC, phát triển web.</strong>
+                        <div id="date_1744569243051_1744569243841" class="d-flex flex-row align-self-center">
+                            <div class="mx-2">from:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                            <div class="mx-2">to:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                        </div>
+                    </div>
+                    <div id="section-item_1744569243051_1744569243841">
                         <div class="mt-2">
                             <strong class="fs-6" contenteditable="true">Khoa Khoa Học - Kỹ Thuật Máy Tính</strong>
                             <p contenteditable="true">
@@ -385,11 +509,15 @@
     }
 
 </script>
-    
+            
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
     </form>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+    <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick()"> Copy link</div> 
+    </div>
+    
 
 
 <script>
@@ -453,7 +581,15 @@
         document.getElementById("page_content").value = content;
         document.getElementById("save-form").submit();
     }
+
+    function copyLinkClick() {
+        const link = window.location.href;
+        navigator.clipboard.writeText(link)
+    }
 </script>
+
+
+
 
 
 </body>
