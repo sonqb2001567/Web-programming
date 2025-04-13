@@ -42,6 +42,7 @@ if (isset($_POST['trash_button'])) {
     <title>BTL web</title>
 </head>
 <body>
+    <!-- Thanh điều hướng (giữ nguyên) -->
     <div class="d-flex flex-row sticky-top justify-content-between p-2 shadow-sm" style="background-color: rgb(242, 244, 245);">
         <div class="d-inline-flex align-items-center">
             <button type="button" class="custom-button btn btn-link text-dark mr-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -76,7 +77,7 @@ if (isset($_POST['trash_button'])) {
 
     <header style="background-color: rgb(242, 244, 245);">
         <div class="container">
-            <?php if (isset($_SESSION['user_type'])) { // Chỉ hiển thị "CV của bạn" cho admin và user ?>
+            <?php if (isset($_SESSION['user_type'])) { ?>
                 <section class="mb-5">
                     <br>
                     <h2 class="h6 mt-3">CV của bạn:</h2>
@@ -119,7 +120,7 @@ if (isset($_POST['trash_button'])) {
         <?php if (!isset($_GET['search_zone']) || $_GET['search_zone'] == "") { ?>
             <section>
                 <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
-                <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') { // Chỉ hiển thị nút "Create default" cho admin ?>
+                <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') { ?>
                     <form action="index.php" method="get">
                         <button class="btn btn-outline-primary mb-3" id="create_default" name="page" value="submitionForm">Create default</button>
                     </form>
@@ -135,14 +136,18 @@ if (isset($_POST['trash_button'])) {
                     </button>
                     <?php
                     $sql = "
-                        SELECT *
-                        FROM template
+                        SELECT t.*, c.ID as cv_id, cc.cv_content_id
+                        FROM template t
+                        LEFT JOIN cv c ON c.template_id = t.template_id
+                        LEFT JOIN cv_content cc ON cc.cv_id = c.ID
                         LIMIT $starter, $skip
                     ";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
+                            // Nếu không có cv_content_id, sử dụng giá trị mặc định (ví dụ: 2 cho Template 1)
+                            $cv_content_id = $row['cv_content_id'] ?? 2; // Mặc định Template 1 có cv_content_id = 2
                             ?>
                             <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
                                 <button class="custom-button3" id="<?php echo $row['template_id'];?>">
@@ -155,7 +160,7 @@ if (isset($_POST['trash_button'])) {
                                     </div>
                                 </button>
                                 <input type="hidden" name="page" value="Formcv">
-                                <input type="hidden" id="template_id" name="template_id" value="<?php echo $row['template_id'];?>">
+                                <input type="hidden" name="cv_content_id" value="<?php echo $cv_content_id;?>">
                             </form>
                             <?php
                         }
@@ -277,15 +282,18 @@ if (isset($_POST['trash_button'])) {
                 <div class="d-flex flex-row row">
                     <?php
                     $sql = "
-                        SELECT *
-                        FROM template
-                        WHERE name LIKE '%".$_GET['search_zone']."%'
-                        OR date LIKE '%".$_GET['search_zone']."%'
+                        SELECT t.*, c.ID as cv_id, cc.cv_content_id
+                        FROM template t
+                        LEFT JOIN cv c ON c.template_id = t.template_id
+                        LEFT JOIN cv_content cc ON cc.cv_id = c.ID
+                        WHERE t.name LIKE '%".$_GET['search_zone']."%'
+                        OR t.date LIKE '%".$_GET['search_zone']."%'
                     ";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
+                            $cv_content_id = $row['cv_content_id'] ?? 2;
                             ?>
                             <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
                                 <button class="custom-button3" id="<?php echo $row['template_id'];?>">
@@ -298,7 +306,7 @@ if (isset($_POST['trash_button'])) {
                                     </div>
                                 </button>
                                 <input type="hidden" name="page" value="Formcv">
-                                <input type="hidden" id="template_id" name="template_id" value="<?php echo $row['template_id'];?>">
+                                <input type="hidden" name="cv_content_id" value="<?php echo $cv_content_id;?>">
                             </form>
                             <?php
                         }

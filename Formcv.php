@@ -34,8 +34,12 @@
     </style>
 </head>
 
-<body id="cv-content" class="bg-light d-flex justify-content-center position-relative" > <!--back-ground-->
+<body id="cv-content" class="bg-light d-flex justify-content-center position-relative">
     <?php include('templateHolder.php');?> 
+    <?php 
+    // Lấy cv_content_id từ URL
+    $cv_content_id = isset($_GET['cv_content_id']) ? (int)$_GET['cv_content_id'] : 2; // Mặc định là 2 nếu không có
+    ?>
     <?php include('cvtemplate_1.php');?>
     
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
@@ -109,7 +113,7 @@
 
     function copyLinkClick() {
         const link = "http://localhost:8080/Web-programming/CV_" + ".php"; 
-    navigator.clipboard.writeText(link)
+        navigator.clipboard.writeText(link);
     }
 </script>
 </html>

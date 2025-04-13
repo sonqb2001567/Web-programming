@@ -1,5 +1,84 @@
-<div id="cv-content" class="d-flex flex-row justify-content-center m-0 p-0 w-100">
-        
+<!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+
+                        <!-- bootstrap -->
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+                        <!-- font awesome -->
+                        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+                        <link rel="stylesheet" href="style.css">
+
+                    </head><body id="cv-content" class="bg-light d-flex justify-content-center position-relative">
+    
+    
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #cv-form{
+            width: 60%;
+            min-height: 900px;
+            min-width: 500px;
+        }
+
+        #cv-element{
+            margin: 0;
+            padding: 10px;
+        }
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #5e5e5e;
+            margin: 1em 0;
+            padding: 0;
+        }
+
+        #templates-holder{
+            background-color: #737373;
+            width: 200px;
+            height: 100vh;
+        }
+    </style>
+
+
+ <!--back-ground-->
+    
+<style>
+    #scroll-templates-view::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+        display: none;
+    }
+</style>
+
+<div id="position-fixed template-holder-container" class="position-absolute top-0 start-0">
+    <div id="openholder-btn" class="btn position-fixed" style="display: block;" onclick="tempPlateButtonClick()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-person-fill" viewBox="0 0 16 16">
+            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0m2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755"></path>
+        </svg>
+    </div>
+
+    <div id="templates-holder" class="position-fixed top-0 start-0" style="display: none; z-index: 100;height: 100vh">
+        <div class="btn position-fixed" onclick="tempPlateCloseButtonClick()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" style="color: white;" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
+            </svg>
+        </div>
+        <div id="scroll-templates-view" style="overflow-y: auto; overflow-x: hidden; height: 100vh">
+            <div class="d-flex flex-column pt-5">
+                <img class="my-3 ms-5" src="https://i.pinimg.com/736x/45/68/47/45684748d9a4c9adf6cdd3f958a10d7e.jpg" alt="Template 1 loading=" lazy"="" style="height: auto; width: 75px;"><img class="my-3 ms-5" src="https://i.pinimg.com/736x/ed/1d/6b/ed1d6b44b28df0ac7ae98a4d4b5d2745.jpg" alt="Template 2 loading=" lazy"="" style="height: auto; width: 75px;"><img class="my-3 ms-5" src="https://i.pinimg.com/736x/68/d6/4b/68d64b24261cee027fd135bb79dad9cf.jpg" alt="Template 3 loading=" lazy"="" style="height: auto; width: 75px;"><img class="my-3 ms-5" src="image/template4.jpg" alt="Template 4 loading=" lazy"="" style="height: auto; width: 75px;"><img class="my-3 ms-5" src="image/template5.jpg" alt="Template 5 loading=" lazy"="" style="height: auto; width: 75px;"><img class="my-3 ms-5" src="image/template6.jpg" alt="Template 6 loading=" lazy"="" style="height: auto; width: 75px;">            </div>
+        </div>
+    </div>
+</div> 
+    
 <div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
     <div class="bg-secondary text-white w-50">  <!--Additional infor-->
         
@@ -141,7 +220,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">EDUCATION</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -309,4 +388,78 @@
     }
 
 </script>
-    </div>
+    
+    <form id="save-form" method="POST" action="save_page.php" class="d-none">
+        <textarea id="page_content" name="page_content" class="d-none"></textarea>
+    </form>
+    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+
+
+<script>
+    function hoverAdd(x){
+        const btnActionAdd = x.querySelector('#btn-action-add');
+        const btnActionRemove = x.querySelector('#btn-action-remove');
+
+        x.style.borderStyle = 'dashed';
+
+        if (btnActionAdd) {
+            btnActionAdd.style.display = 'block';
+        }
+
+        if (btnActionRemove) {
+            btnActionRemove.style.display = 'block';
+        }
+    }
+
+    function outAdd(x){
+        const btnActionAdd = x.querySelector('#btn-action-add');
+        const btnActionRemove = x.querySelector('#btn-action-remove');
+
+        x.style.borderStyle = 'hidden';
+
+        if (btnActionAdd) {
+            btnActionAdd.style.display = 'none';
+        }
+
+        if (btnActionRemove) {
+            btnActionRemove.style.display = 'none';
+        }
+    }
+
+    function tempPlateButtonClick() {
+        let templateHolder = document.getElementById("templates-holder");
+        let b = document.getElementById("openholder-btn");
+
+        if (b.style.display === "block"){
+            b.style.display = "none"
+        }
+
+        if (templateHolder.style.display === "none") {
+            templateHolder.style.display = "block";
+        } 
+    }
+
+    function tempPlateCloseButtonClick(){
+        let x = document.getElementById("templates-holder");
+        let b = document.getElementById("openholder-btn");
+
+        if (b.style.display === "none"){
+            b.style.display = "block"
+        }
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } 
+    }
+
+    function submitClick() {
+        const content = document.getElementById("cv-content").outerHTML;
+        document.getElementById("page_content").value = content;
+        document.getElementById("save-form").submit();
+    }
+</script>
+
+
+
+
+
+</body>
