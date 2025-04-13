@@ -19,7 +19,7 @@ loginButton.addEventListener("click", function (e) {
     // Kiểm tra thông tin đăng nhập
     if (username === "1" && password === "1") {
         // Nếu đúng, chuyển hướng đến trang home.html với tham số truy vấn
-        window.location.href = `http://localhost/btl1/?page=home`;
+        window.location.href = `http://localhost:8080/Web-programming-1/?page=home`;
     } else {
         // Nếu sai, hiển thị thông báo lỗi
         alert("Invalid username or password. Please try again.");
