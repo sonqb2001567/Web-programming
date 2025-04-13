@@ -216,7 +216,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">EDUCATION</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -389,7 +389,7 @@
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
         <input type="hidden" name="cv_id" value="0">
         <input type="hidden" name="template_id" value="2">
-        <input type="hidden" name="user_id" value="6">
+        <input type="hidden" name="user_id" value="1">
     </form>
     <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
         <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>

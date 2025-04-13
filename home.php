@@ -1,9 +1,8 @@
 <?php
 @session_start();
 
-
-// Kết nối cơ sở dữ liệu (dùng lại từ login.php)
-$svname = "localhost:3306";
+// Kết nối cơ sở dữ liệu
+$svname = "localhost:3308";
 $user_svname = "root";
 $sv_password = "";
 $sv_dbname = "mycvdatabase";
@@ -29,10 +28,24 @@ $total_pages = ceil($total_items / $items_per_page);
 // Xử lý xóa CV
 if (isset($_POST['trash_button'])) {
     $cv_id = $_POST['trash_button'];
-    $sql = "DELETE FROM cv_content WHERE cv_id = $cv_id";
-    $conn->query($sql);
-    $sql = "DELETE FROM cv WHERE ID = $cv_id";
-    $conn->query($sql);
+    $sql_check = "SELECT * FROM cv WHERE ID = ? AND user_id = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("ii", $cv_id, $_SESSION['user_id']);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    if ($result_check->num_rows > 0) {
+        $sql = "DELETE FROM cv_content WHERE cv_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $cv_id);
+        $stmt->execute();
+
+        $sql = "DELETE FROM cv WHERE ID = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $cv_id);
+        $stmt->execute();
+    }
+    $stmt_check->close();
 }
 ?>
 
@@ -43,7 +56,7 @@ if (isset($_POST['trash_button'])) {
     <title>BTL web</title>
 </head>
 <body>
-    <!-- Thanh điều hướng (giữ nguyên) -->
+    <!-- Thanh điều hướng -->
     <div class="d-flex flex-row sticky-top justify-content-between p-2 shadow-sm" style="background-color: rgb(242, 244, 245);">
         <div class="d-inline-flex align-items-center">
             <button type="button" class="custom-button btn btn-link text-dark mr-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -78,18 +91,22 @@ if (isset($_POST['trash_button'])) {
 
     <header style="background-color: rgb(242, 244, 245);">
         <div class="container">
-            <?php if (isset($_SESSION['user_type'])) { ?>
+            <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'user') { ?>
                 <section class="mb-5">
                     <br>
                     <h2 class="h6 mt-3">CV của bạn:</h2>
                     <div class="d-flex flex-row row">
                         <?php
                         $sql = "
-                            SELECT *
+                            SELECT c.*, t.picture
                             FROM cv c
                             JOIN template t ON c.template_id = t.template_id
+                            WHERE c.user_id = ?
                         ";
-                        $result = $conn->query($sql);
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $_SESSION['user_id']);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
 
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
@@ -102,14 +119,21 @@ if (isset($_POST['trash_button'])) {
                                             <i class="fa-solid fa-trash" style="color: red;"></i>
                                         </button>
                                     </form>
-                                    <button class="custom-button2">
-                                        <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
-                                        <p class="small"><?php echo $row['Name'];?></p>
-                                    </button>
+                                    <form action="index.php" method="get">
+                                        <button class="custom-button2">
+                                            <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
+                                            <p class="small"><?php echo $row['Name'];?></p>
+                                        </button>
+                                        <input type="hidden" name="page" value="Formcv">
+                                        <input type="hidden" name="cv_id" value="<?php echo $row['ID'];?>">
+                                    </form>
                                 </div>
                                 <?php
                             }
+                        } else {
+                            echo "<p class='text-center'>Bạn chưa có CV nào.</p>";
                         }
+                        $stmt->close();
                         ?>
                     </div>
                 </section>
@@ -121,7 +145,7 @@ if (isset($_POST['trash_button'])) {
         <?php if (!isset($_GET['search_zone']) || $_GET['search_zone'] == "") { ?>
             <section>
                 <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
-                <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') { ?>
+                <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'user') { ?>
                     <form action="index.php" method="get">
                         <button class="btn btn-outline-primary mb-3" id="create_default" name="page" value="submitionForm">Create default</button>
                     </form>
@@ -149,11 +173,11 @@ if (isset($_POST['trash_button'])) {
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            // Nếu không có cv_content_id, sử dụng giá trị mặc định (ví dụ: 2 cho Template 1)
-                            $cv_content_id = $row['cv_content_id'] ?? 2; // Mặc định Template 1 có cv_content_id = 2
+                            $cv_content_id = $row['cv_content_id'] ?? 0; // 0 for new CV
+                            $template_id = $row['template_id'];
                             ?>
                             <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
-                                <button class="custom-button3" id="<?php echo $row['template_id'];?>">
+                                <button class="custom-button3" id="<?php echo $template_id;?>">
                                     <div class="card">
                                         <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
                                         <div class="card-body">
@@ -164,6 +188,7 @@ if (isset($_POST['trash_button'])) {
                                 </button>
                                 <input type="hidden" name="page" value="Formcv">
                                 <input type="hidden" name="cv_content_id" value="<?php echo $cv_content_id;?>">
+                                <input type="hidden" name="template_id" value="<?php echo $template_id;?>">
                             </form>
                             <?php
                         }
@@ -305,10 +330,11 @@ if (isset($_POST['trash_button'])) {
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            $cv_content_id = $row['cv_content_id'] ?? 2;
+                            $cv_content_id = $row['cv_content_id'] ?? 0;
+                            $template_id = $row['template_id'];
                             ?>
                             <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
-                                <button class="custom-button3" id="<?php echo $row['template_id'];?>">
+                                <button class="custom-button3" id="<?php echo $template_id;?>">
                                     <div class="card">
                                         <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
                                         <div class="card-body">
@@ -319,6 +345,7 @@ if (isset($_POST['trash_button'])) {
                                 </button>
                                 <input type="hidden" name="page" value="Formcv">
                                 <input type="hidden" name="cv_content_id" value="<?php echo $cv_content_id;?>">
+                                <input type="hidden" name="template_id" value="<?php echo $template_id;?>">
                             </form>
                             <?php
                         }

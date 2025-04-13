@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Document</title>
-                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-                    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-                    <link rel="stylesheet" href="style.css">
-                </head><body id="cv-content" class="bg-light d-flex justify-content-center position-relative">
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+
+                        <!-- bootstrap -->
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+                        <!-- font awesome -->
+                        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+                        <link rel="stylesheet" href="style.css">
+
+                    </head><body id="cv-content" class="bg-light d-flex justify-content-center position-relative">
     
     
 
@@ -74,7 +78,7 @@
         </div>
     </div>
 </div> 
-    
+        
 <div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
     <div class="bg-secondary text-white w-50">  <!--Additional infor-->
         
@@ -207,7 +211,7 @@
     </div>
     <div class="text-black w-100 d-flex flex-column"> <!--main infor-->
         <div id="cv-element" class="fs-4">
-            <strong contenteditable="true">Trần Thị B</strong>
+            <strong contenteditable="true">Võ Trúc Sơn</strong>
         </div>
         <div id="cv-element" class="fs-4">
             <strong contenteditable="true">Developer Fresher</strong>
@@ -216,7 +220,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">EDUCATION</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -387,9 +391,6 @@
             
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
-        <input type="hidden" name="cv_id" value="0">
-        <input type="hidden" name="template_id" value="2">
-        <input type="hidden" name="user_id" value="6">
     </form>
     <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
         <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>

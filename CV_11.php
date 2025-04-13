@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div id="section-item" class="d-flex flex-column">
-                        <strong contenteditable="true">Chứng chỉ Facebook Ads, TOEIC 800</strong>
+                        <strong contenteditable="true">MOS, Chứng chỉ Flutter từ Udemy</strong>
                         <p contenteditable="true">
                             - 7.0 (2019)
                         </p>
@@ -141,7 +141,7 @@
             <div id="section">
                 <div id="section-item" class="d-flex flex-column">
                     <p contenteditable="true">
-                        Chưa có dữ liệu                    </p>
+                        Thành viên CLB Công nghệ UIT                    </p>
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@
                     <div id="section-item" class="d-flex flex-column">
                         <strong contenteditable="true">Programing skill</strong>
                         <p contenteditable="true">
-                            Giao tiếp, Photoshop, Quản lý thời gian                        </p>
+                            Flutter, Dart, Git                        </p>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
     </div>
     <div class="text-black w-100 d-flex flex-column"> <!--main infor-->
         <div id="cv-element" class="fs-4">
-            <strong contenteditable="true">Trần Thị B</strong>
+            <strong contenteditable="true">Tran Van A</strong>
         </div>
         <div id="cv-element" class="fs-4">
             <strong contenteditable="true">Developer Fresher</strong>
@@ -216,7 +216,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">EDUCATION</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -237,7 +237,7 @@
                             <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"></path>
                             <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"></path>
                         </svg>
-                        <strong class="ms-2 fs-5" contenteditable="true">Đại học Kinh tế TP.HCM</strong>
+                        <strong class="ms-2 fs-5" contenteditable="true">Đại học Công nghệ Thông tin - ĐHQG HCM</strong>
                         <div id="date" class="d-flex flex-row align-self-center">
                             <div class="mx-2">from:</div>
                             <div contenteditable="true">
@@ -264,7 +264,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">WORK EXPERIENCE</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -388,7 +388,7 @@
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
         <input type="hidden" name="cv_id" value="0">
-        <input type="hidden" name="template_id" value="2">
+        <input type="hidden" name="template_id" value="1">
         <input type="hidden" name="user_id" value="6">
     </form>
     <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
