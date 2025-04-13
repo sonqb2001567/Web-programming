@@ -8,17 +8,6 @@
         $user_id = $_POST['user_id'] ?? 1;         // Example default (should come from session ideally)
         $date_cv = date('Y-m-d'); // current date
         
-        $countUserCVSQL = "SELECT COUNT(*) AS total_cv FROM cv WHERE user_id = $user_id;";
-        $countUserCV = $conn->query($countUserCVSQL)->fetch_assoc();
- 
-        if ($countUserCV["total_cv"] >= 3){
-            echo "<script>
-                    alert('One user can only have 3 CVs! Please delete some cv and countinue');
-                    window.location.href = 'http://localhost:8080/Web-programming/index.php?page=home';
-                </script>";
-            exit();
-        }
-
         $cvInsertSql = "INSERT INTO cv (name, DATE_CV, template_id, user_id)
                         VALUES ('$name','$date_cv', '$template_id', '$user_id')";
         $result = $conn->query($cvInsertSql);
