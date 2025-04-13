@@ -1,6 +1,6 @@
 <?php
     // Kết nối cơ sở dữ liệu (nếu chưa có)
-$svname = "localhost:3308";
+$svname = "localhost:3306";
 $user_svname = "root";
 $sv_password = "";
 $sv_dbname = "mycvdatabase";

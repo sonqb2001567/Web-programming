@@ -47,7 +47,7 @@
     </form>
     <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
         <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
-        <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick(<?php echo $_POST['']; ?>)"> Copy link</div> 
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick()"> Copy link</div> 
     </div >
     
 </body>
@@ -115,13 +115,8 @@
     }
 
     function copyLinkClick() {
-<<<<<<< HEAD
-        const link = "http://localhost:8080/Web-programming/" + ".php"; 
-    navigator.clipboard.writeText(link)
-=======
-        const link = "http://localhost:8080/Web-programming/CV_" + ".php"; 
-        navigator.clipboard.writeText(link);
->>>>>>> origin/tson
+        const link = window.location.href; 
+        navigator.clipboard.writeText(link)
     }
 </script>
 </html>
