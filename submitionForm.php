@@ -14,7 +14,7 @@
       if(!isset($_POST['cv_content_name']) || $_POST['cv_content_name'] == '') {
         echo "<script>
           alert('Username not exists');
-          window.location.href = 'http://localhost/btl/submitionForm.php';
+          window.location.href = 'http://localhost/Web-programming/submitionForm.php';
         </script>";
         die;
       } 
@@ -55,12 +55,12 @@
         
         echo "<script>
           alert('Submit successfully!');
-          window.location.href = 'http://localhost/btl1/index.php?page=home';
+          window.location.href = 'http://localhost:8080/Web-programming/index.php?page=home';
         </script>";
       } else {
         echo "<script>
           alert('Submit failed!');
-          window.location.href = 'http://localhost/btl1/index.php?page=submitionForm';
+          window.location.href = 'http://localhost:8080/Web-programming/index.php?page=submitionForm';
         </script>";
       }
       
