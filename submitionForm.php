@@ -2,6 +2,12 @@
   // session_start();
     include('connection.php');
 
+    // if(isset($_SESSION['user_id'])){
+    //   $user_id = $_SESSION['user_id'];
+    // }
+    $user_id = 1;
+
+
     if (isset($_POST['submit_cv_button'])) {
 
       
@@ -36,16 +42,25 @@
       ";
       $result = $conn->query($sql);
 
-
       if ($result) {
+        $last_id = $conn->insert_id;
+
+        // set default cv for user
+        $sql="
+          UPDATE user
+          SET user_defaultcv = $last_id
+          WHERE user_id = $user_id;
+        ";
+        $result = $conn->query($sql);
+        
         echo "<script>
           alert('Submit successfully!');
-          window.location.href = 'http://localhost/btl/index.php?page=home';
+          window.location.href = 'http://localhost/btl1/index.php?page=home';
         </script>";
       } else {
         echo "<script>
           alert('Submit failed!');
-          window.location.href = 'http://localhost/btl/submitionForm.php';
+          window.location.href = 'http://localhost/btl1/index.php?page=submitionForm';
         </script>";
       }
       
