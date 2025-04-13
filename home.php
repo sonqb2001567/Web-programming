@@ -3,11 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BTL web</title>
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- font awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="d-flex flex-row sticky-top justify-content-between p-2 shadow-sm" style="background-color: rgb(242, 244, 245);">
@@ -113,6 +109,7 @@
                         while($row = $result->fetch_assoc()) {
                             ?>
                             <!-- html zone -->
+<!-- template -->
                             <button class="custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 mb-4" id="<?php echo $row['template_id'];?>">
                                 <div class="card">
                                     <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
@@ -122,6 +119,7 @@
                                     </div>
                                 </div>
                             </button>
+<!-- template -->
                             <!-- end html zone -->
                             <?php
                         // end while
@@ -144,22 +142,6 @@
         </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- pagination -->
         <div class="ms-3" style="position: relative;">
             <section class="d-flex justify-content-center">
@@ -172,6 +154,7 @@
 <!-- go to first page -->
                         <form action="index.php" method="get">
                             <input type="hidden" name="page_number" value="1">
+                            <input type="hidden" name="page" value="home">
                             <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
                                 First
                             </button>
@@ -183,6 +166,7 @@
                         ?>
                                 <form action="index.php" method="get">
                                     <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']-1 ?>">
+                                    <input type="hidden" name="page" value="home">
                                     <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
                                         <i class="fas fa-chevron-left mx-2"></i>
                                         Previous
@@ -193,6 +177,7 @@
                         ?>
                             <form action="index.php" method="get">
                                 <input type="hidden" name="page_number" value="1">
+                                <input type="hidden" name="page" value="home">
                                 <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
                                     <i class="fas fa-chevron-left mx-2"></i>
                                     Previous
@@ -209,6 +194,7 @@
                             ?>
                                 <!-- <a href="?page=anime&page_number=<?php echo $i?>" class=" btn btn-primary text-white"><?php echo $i?></a> -->
                                 <form action="index.php" method="get">
+                                    <input type="hidden" name="page" value="home">
                                     <input type="hidden" name="page_number" value="<?php echo $i?>">
                                     <button type="submit" class="btn btn-primary text-white me-1"><?php echo $i?></button>
                                 </form>
@@ -224,6 +210,8 @@
                         ?>
                             <form action="index.php" method="get">
                                 <input type="hidden" name="page_number" value="2">
+                                <input type="hidden" name="page" value="home">
+
                                 <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
                                     Next
                                     <i class="fas fa-chevron-right mx-2"></i>
@@ -235,6 +223,8 @@
                         ?>
                                 <form action="index.php" method="get">
                                     <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']+1 ?>">
+                                    <input type="hidden" name="page" value="home">
+    
                                     <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
                                         Next
                                         <i class="fas fa-chevron-right mx-2"></i>
@@ -245,6 +235,8 @@
                         ?>        
                                 <form action="index.php" method="get">
                                     <input type="hidden" name="page_number" value="<?php echo $total_pages ?>">
+                                    <input type="hidden" name="page" value="home">
+    
                                     <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
                                         Next
                                         <i class="fas fa-chevron-right mx-2"></i>
@@ -257,6 +249,8 @@
 <!-- go to last page -->
                         <form action="index.php" method="get">
                             <input type="hidden" name="page_number" value="<?php echo $total_pages?>">
+                            <input type="hidden" name="page" value="home">
+    
                             <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
                                 Last
                             </button>
