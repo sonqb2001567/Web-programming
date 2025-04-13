@@ -2,7 +2,7 @@
 @session_start();
 
 // Kết nối cơ sở dữ liệu
-$svname = "localhost:3308"; // Cổng MySQL từ hình ảnh
+$svname = "localhost:3308";
 $user_svname = "root";
 $sv_password = "";
 $sv_dbname = "mycvdatabase";
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Xử lý đăng nhập
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -29,28 +29,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $admin = $result_admin->fetch_assoc();
         $_SESSION['admin_id'] = $admin['admin_id'];
         $_SESSION['admin_name'] = $admin['name'];
-        $_SESSION['user_type'] = 'admin'; // Lưu loại tài khoản
+        $_SESSION['user_type'] = 'admin';
         header("Location: index.php?page=home");
         exit();
     }
 
     // Kiểm tra trong bảng user
-    $query_user = "SELECT * FROM user WHERE email = ? AND pass = ?";
+    $query_user = "SELECT * FROM user WHERE email = ?";
     $stmt_user = $conn->prepare($query_user);
-    $stmt_user->bind_param("ss", $email, $password);
+    $stmt_user->bind_param("s", $email);
     $stmt_user->execute();
     $result_user = $stmt_user->get_result();
 
     if ($result_user->num_rows > 0) {
         $user = $result_user->fetch_assoc();
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['user_name'] = $user['name'];
-        $_SESSION['user_type'] = 'user'; // Lưu loại tài khoản
-        header("Location: index.php?page=home");
-        exit();
+        // Kiểm tra mật khẩu đã mã hóa
+        if (password_verify($password, $user['pass'])) {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_name'] = $user['name'];
+            $_SESSION['user_type'] = 'user';
+            header("Location: index.php?page=home");
+            exit();
+        }
     }
 
-    // Nếu không tìm thấy tài khoản
+    // Nếu không tìm thấy tài khoản hoặc mật khẩu sai
     $error = "Email hoặc mật khẩu không đúng.";
 
     $stmt_admin->close();
@@ -72,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="login.php" method="POST">
             <h2>Login</h2>
             <?php if (isset($error)) { echo "<p style='color: red;'>$error</p>"; } ?>
+            <?php if (isset($_GET['success'])) { echo "<p style='color: green;'>".htmlspecialchars($_GET['success'])."</p>"; } ?>
             <div class="input-field">
                 <input type="email" id="email" name="email" required>
                 <label for="email">Enter your email</label>
@@ -88,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <button type="submit">Log in</button>
             <div class="register">
-                <p>Don't have an account? <a href="#">Register</a></p>
+                <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
         </form>
     </div>
