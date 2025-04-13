@@ -59,13 +59,6 @@ CREATE TABLE CV (
         ON DELETE CASCADE
 );
 
--- 6. Thêm FK user_defaultcv tham chiếu CV(ID)
-ALTER TABLE User
-ADD CONSTRAINT fk_user_defaultcv
-    FOREIGN KEY (user_defaultcv) REFERENCES CV(ID)
-    ON UPDATE CASCADE
-    ON DELETE SET NULL;
-
 -- 7. Bảng cv_content
 CREATE TABLE CV_content (
     cv_content_id INT AUTO_INCREMENT PRIMARY KEY,

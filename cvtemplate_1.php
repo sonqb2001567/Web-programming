@@ -1,6 +1,6 @@
 <?php
     include("connection.php");
-    $cv_id =  isset($_GET['cvId']) ? (int)$_GET['cvId'] : 1;
+    $cv_id =  isset($_GET['cvId']) ? (int)$_GET['cvId'] : 4;
     $cvContentSql = "SELECT * FROM cv_content WHERE CV_id = $cv_id";
     $cvContent = $conn->query($cvContentSql)->fetch_assoc();
     if (empty($cvContent)) {
