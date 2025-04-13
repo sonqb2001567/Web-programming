@@ -5,8 +5,7 @@
     #$page = $_GET['page']
     $page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
-    $allowedPages = ['login', 'home', 'Formcv', 'product'];
-
+    $allowedPages = ['login', 'home', 'Formcv', 'product', 'submitionForm'];
 
     $starter = 0;
     $skip = 2; // number item per page
@@ -22,18 +21,6 @@
     if (isset($_GET['page_number'])) {
         $page_number=$_GET['page_number'];
         $starter=($page_number-1)*$skip;
-    }
-
-
-    if (in_array($page, $allowedPages)) {
-        if ($page == 'login'){
-            include("$page.php");
-        } else {
-            include("$page.php");
-        }
-
-    } else {
-        include("404.html");
     }
 
 ?>
@@ -54,5 +41,17 @@
 </head>
 <body>
     
+    <?php
+    
+        if (in_array($page, $allowedPages)) {
+            include("$page.php");            
+        } else {
+            include("404.html");
+        }
+    
+    ?>
+
+
+
 </body>
 </html>

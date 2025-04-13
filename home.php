@@ -46,12 +46,6 @@
                 <br>
                 <h2 class="h6 mt-3">CV của bạn:</h2>
                 <div class="d-flex flex-row row">
-                    <!-- box 1 -->
-                    <button class="custom-button2 col-6 col-sm-4 col-md-3 col-lg-2 text-center mb-4">
-                        <i class="fa-solid fa-plus img-fluid mb-2"></i>
-                        <!-- <img src="https://i.pinimg.com/736x/45/68/47/45684748d9a4c9adf6cdd3f958a10d7e.jpg" alt="Tài liệu trống" class="img-fluid mb-2 customer-image"> -->
-                        <p class="small">Tạo mới</p>
-                    </button>
 
                     <?php
                         $sql = "
@@ -86,6 +80,7 @@
 <!-- bộ currently template được admin đăng lên -->
         <section>
             <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
+            <button class="btn btn-outline-primary mb-3">Create default</button>
             <div class="d-flex flex-row row">
 <!-- tao moi -->
                 <button class="align-items-center justify-content-center custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">

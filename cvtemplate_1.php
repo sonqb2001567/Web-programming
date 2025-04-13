@@ -1,13 +1,11 @@
 <?php
     include("connection.php");
-    $cv_id =  isset($_GET['cvId']) ? (int)$_GET['cvId'] : 1;
+    $cv_id =  isset($_GET['cvId']) ? (int)$_GET['cvId'] : 4;
     $cvContentSql = "SELECT * FROM cv_content WHERE CV_id = $cv_id";
     $cvContent = $conn->query($cvContentSql)->fetch_assoc();
     if (empty($cvContent)) {
         die("query Error: " . $conn->connect_error);
     }
-
-
 ?>
 
 <div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
