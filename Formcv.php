@@ -41,12 +41,15 @@
     $cv_content_id = isset($_GET['cv_content_id']) ? (int)$_GET['cv_content_id'] : 2; // Mặc định là 2 nếu không có
     ?>
     <?php include('cvtemplate_1.php');?>
-    
+            
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
     </form>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="copyLinkClick()"> Share link</div>
+    <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick()"> Copy link</div> 
+    </div >
+    
 </body>
 
 <script>
@@ -112,8 +115,8 @@
     }
 
     function copyLinkClick() {
-        const link = "http://localhost:8080/Web-programming/CV_" + ".php"; 
-        navigator.clipboard.writeText(link);
+        const link = window.location.href; 
+        navigator.clipboard.writeText(link)
     }
 </script>
 </html>

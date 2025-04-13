@@ -66,7 +66,7 @@
         </svg>
     </div>
 
-    <div id="templates-holder" class="position-fixed top-0 start-0" style="display: none; z-index: 100;height: 100vh">
+    <div id="templates-holder" class="position-fixed top-0 start-0" style="display: none; z-index: 100; height: 100vh;">
         <div class="btn position-fixed" onclick="tempPlateCloseButtonClick()">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" style="color: white;" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
@@ -115,7 +115,7 @@
         <div id="cv-element">
             <strong>CERTIFICATIONS</strong>
             <div id="section">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -123,7 +123,7 @@
                             </svg>
                             <span style="font-size: 12px;">Thêm</span>
                         </div>
-                        <div id="btn-action-remove" class="btn btn-danger m-1 btn-sm" style="display: none; " onclick="removeSection(this)">
+                        <div id="btn-action-remove" class="btn btn-danger m-1 btn-sm" style="display: none;" onclick="removeSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
                                 <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
@@ -179,7 +179,7 @@
         <div id="cv-element">
             <strong>STRENGTH AND WEAKNESSES</strong>
             <div id="section">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -196,6 +196,32 @@
                         </div>
                     </div>
                     <div id="section-item" class="d-flex flex-column">
+                        <strong>Strength</strong>
+                        <p contenteditable="true">
+                            Positive
+                        </p>
+                        <strong>Weaknesses</strong>
+                        <p contenteditable="true">
+                            Dont know anything
+                        </p>
+                    </div>
+                </div><div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                    <div id="button-holder_1744569085305" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
+                        <div id="btn-action-add_1744569085305" class="btn btn-success m-1 btn-sm" style="display: block;" onclick="duplicateSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Thêm</span>
+                        </div>
+                        <div id="btn-action-remove_1744569085305" class="btn btn-danger m-1 btn-sm" style="display: block;" onclick="removeSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Xóa</span>
+                        </div>
+                    </div>
+                    <div id="section-item_1744569085305" class="d-flex flex-column">
                         <strong>Strength</strong>
                         <p contenteditable="true">
                             Positive
@@ -308,6 +334,46 @@
                             </p>
                         </div>
                     </div>
+                </div><div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                    <div id="button-holder_1744569082188" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
+                        <div id="btn-action-add_1744569082188" class="btn btn-success m-1 btn-sm" style="display: block;" onclick="duplicateSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Thêm</span>
+                        </div>
+                        <div id="btn-action-remove_1744569082188" class="btn btn-danger m-1 btn-sm" style="display: block;" onclick="removeSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Xóa</span>
+                        </div>
+                    </div>
+                    <div id="section-title_1744569082188" class="d-flex flex-row flex-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase align-self-center" viewBox="0 0 16 16">
+                            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"></path>
+                        </svg>
+                        <strong class="ms-2 fs-5" contenteditable="true">2 năm làm việc tại Công ty ABC, phát triển web.</strong>
+                        <div id="date_1744569082188" class="d-flex flex-row align-self-center">
+                            <div class="mx-2">from:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                            <div class="mx-2">to:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                        </div>
+                    </div>
+                    <div id="section-item_1744569082188">
+                        <div class="mt-2">
+                            <strong class="fs-6" contenteditable="true">Khoa Khoa Học - Kỹ Thuật Máy Tính</strong>
+                            <p contenteditable="true">
+    
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -315,7 +381,7 @@
         <div id="cv-element">
             <strong class="text-warning fs-5">PROJECTS</strong>
             <div id="section" class="">
-                <div id="wrapper-popup-action" class="position-relative" style=" border-width: 0.5px; border-style: none; border-color: #c8c8c8;" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                <div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: hidden; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
                     <div id="button-holder" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
                         <div id="btn-action-add" class="btn btn-success m-1 btn-sm" style="display: none;" onclick="duplicateSection(this)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -356,6 +422,47 @@
                             </p>
                         </div>
                     </div>
+                </div><div id="wrapper-popup-action" class="position-relative" style="border-width: 0.5px; border-style: dashed; border-color: rgb(200, 200, 200);" onmouseover="hoverAdd(this)" onmouseout="outAdd(this)">
+                    <div id="button-holder_1744569084072" class="position-absolute top-0 end-0 d-flex flex-column ps-3"> 
+                        <div id="btn-action-add_1744569084072" class="btn btn-success m-1 btn-sm" style="display: block;" onclick="duplicateSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Thêm</span>
+                        </div>
+                        <div id="btn-action-remove_1744569084072" class="btn btn-danger m-1 btn-sm" style="display: block;" onclick="removeSection(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+                            </svg>
+                            <span style="font-size: 12px;">Xóa</span>
+                        </div>
+                    </div>
+                    <div id="section-title_1744569084072" class="d-flex flex-row flex-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square align-self-center" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"></path>
+                            </svg>
+                        <strong class="ms-2 fs-5" contenteditable="true">Bách Khoa University</strong>
+                        <div id="date_1744569084072" class="d-flex flex-row align-self-center">
+                            <div class="mx-2">from:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                            <div class="mx-2">to:</div>
+                            <div contenteditable="true">
+                                2025
+                            </div>
+                        </div>
+                    </div>
+                    <div id="section-item_1744569084072">
+                        <div class="mt-2">
+                            <strong class="fs-6" contenteditable="true">Khoa Khoa Học - Kỹ Thuật Máy Tính</strong>
+                            <p contenteditable="true">
+    
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -388,11 +495,15 @@
     }
 
 </script>
-    
+            
     <form id="save-form" method="POST" action="save_page.php" class="d-none">
         <textarea id="page_content" name="page_content" class="d-none"></textarea>
     </form>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+    <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
+        <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick()"> Copy link</div> 
+    </div>
+    
 
 
 <script>
@@ -455,6 +566,11 @@
         const content = document.getElementById("cv-content").outerHTML;
         document.getElementById("page_content").value = content;
         document.getElementById("save-form").submit();
+    }
+
+    function copyLinkClick() {
+        const link = "http://localhost:8080/Web-programming/CV_" + ".php"; 
+    navigator.clipboard.writeText(link)
     }
 </script>
 
