@@ -73,8 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Login</h2>
             <?php if (isset($error)) { echo "<p style='color: red;'>$error</p>"; } ?>
             <div class="input-field">
-                <label for="email">Enter your email</label>
                 <input type="email" id="email" name="email" required>
+                <label for="email">Enter your email</label>
             </div>
             <div class="input-field">
                 <input type="password" id="password" name="password" required>

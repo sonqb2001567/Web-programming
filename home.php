@@ -127,13 +127,15 @@ if (isset($_POST['trash_button'])) {
                 <?php } ?>
 
                 <div class="d-flex flex-row row">
-                    <button class="align-items-center justify-content-center custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">
-                        <div>
-                            <i class="fa-solid fa-plus img-fluid mb-2"></i>
-                            <br>
-                            <p class="small">Tạo mới</p>
-                        </div>
-                    </button>
+                    <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') { ?>
+                        <button class="align-items-center justify-content-center custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">
+                            <div>
+                                <i class="fa-solid fa-plus img-fluid mb-2"></i>
+                                <br>
+                                <p class="small">Tạo mới</p>
+                            </div>
+                        </button>
+                    <?php } ?>
                     <?php
                     $sql = "
                         SELECT t.*, c.ID as cv_id, cc.cv_content_id
@@ -280,6 +282,15 @@ if (isset($_POST['trash_button'])) {
                 <?php } ?>
 
                 <div class="d-flex flex-row row">
+                    <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') { ?>
+                        <button class="align-items-center justify-content-center custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">
+                            <div>
+                                <i class="fa-solid fa-plus img-fluid mb-2"></i>
+                                <br>
+                                <p class="small">Tạo mới</p>
+                            </div>
+                        </button>
+                    <?php } ?>
                     <?php
                     $sql = "
                         SELECT t.*, c.ID as cv_id, cc.cv_content_id
