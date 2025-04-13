@@ -35,9 +35,12 @@
 </head>
 
 <body class="bg-light d-flex justify-content-center position-relative" > <!--back-ground-->
-    <?php include('templateHolder.php');?>
+    <?php include('templateHolder.php');?> 
     <?php include('cvtemplate_1.php');?>
-    <div class="btn btn-success position-fixed bottom-0 end-0 m-3"> Submit</div>
+    <form id="save-form" method="POST" action="save_page.php" class="d-flex flex-row justify-content-center m-0 p-0  w-100">
+            
+    </form>
+    <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
 </body>
 
 <script>
@@ -94,6 +97,12 @@
         if (x.style.display === "block") {
             x.style.display = "none";
         } 
+    }
+
+    function submitClick() {
+        const content = document.getElementById("save-form").outerHTML;
+        document.getElementById("page_content").value = content;
+        document.getElementById("save-form").submit();
     }
 </script>
 </html>

@@ -1,7 +1,7 @@
 <?php
     include("connection.php");
-    $cv_id =  isset($_GET['cvId']) ? (int)$_GET['cvId'] : 1;
-    $cvContentSql = "SELECT * FROM cv_content WHERE CV_id = $cv_id";
+    $cv_content_id =  isset($_GET['cvContentId']) ? (int)$_GET['cvContentId'] : 1;
+    $cvContentSql = "SELECT * FROM cv_content WHERE cv_content_id = $cv_content_id";
     $cvContent = $conn->query($cvContentSql)->fetch_assoc();
     if (empty($cvContent)) {
         die("query Error: " . $conn->connect_error);
