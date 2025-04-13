@@ -1,3 +1,38 @@
+<?php
+@session_start();
+
+// Kết nối cơ sở dữ liệu (dùng lại từ login.php)
+$svname = "localhost:3308";
+$user_svname = "root";
+$sv_password = "";
+$sv_dbname = "mycvdatabase";
+
+$conn = new mysqli($svname, $user_svname, $sv_password, $sv_dbname);
+
+if ($conn->connect_error) {
+    die("Kết nối thất bại: " . $conn->connect_error);
+}
+
+// Kiểm tra session
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Xử lý phân trang (đoạn mã hiện có của bạn)
+$page_number = isset($_GET['page_number']) ? (int)$_GET['page_number'] : 1;
+$items_per_page = 3; // Số mục trên mỗi trang
+$starter = ($page_number - 1) * $items_per_page;
+$skip = $items_per_page;
+
+// Tính tổng số trang
+$sql_count = "SELECT COUNT(*) as total FROM template";
+$result_count = $conn->query($sql_count);
+$row_count = $result_count->fetch_assoc();
+$total_items = $row_count['total'];
+$total_pages = ceil($total_items / $items_per_page);
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
