@@ -38,61 +38,62 @@
     <?php include('templateHolder.php');?>
     <?php include('cvtemplate_1.php');?>
     <div class="btn btn-success position-fixed bottom-0 end-0 m-3"> Submit</div>
-    <script>
-        function hoverAdd(x){
-            const btnActionAdd = x.querySelector('#btn-action-add');
-            const btnActionRemove = x.querySelector('#btn-action-remove');
-
-            x.style.borderStyle = 'dashed';
-
-            if (btnActionAdd) {
-                btnActionAdd.style.display = 'block';
-            }
-
-            if (btnActionRemove) {
-                btnActionRemove.style.display = 'block';
-            }
-        }
-
-        function outAdd(x){
-            const btnActionAdd = x.querySelector('#btn-action-add');
-            const btnActionRemove = x.querySelector('#btn-action-remove');
-
-            x.style.borderStyle = 'hidden';
-
-            if (btnActionAdd) {
-                btnActionAdd.style.display = 'none';
-            }
-
-            if (btnActionRemove) {
-                btnActionRemove.style.display = 'none';
-            }
-        }
-
-        function tempPlateButtonClick() {
-            let templateHolder = document.getElementById("templates-holder");
-            let b = document.getElementById("openholder-btn");
-
-            if (b.style.display === "block"){
-                b.style.display = "none"
-            }
-
-            if (templateHolder.style.display === "none") {
-                templateHolder.style.display = "block";
-            } 
-        }
-
-        function tempPlateCloseButtonClick(){
-            let x = document.getElementById("templates-holder");
-            let b = document.getElementById("openholder-btn");
-
-            if (b.style.display === "none"){
-                b.style.display = "block"
-            }
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } 
-        }
-    </script>
 </body>
+
+<script>
+    function hoverAdd(x){
+        const btnActionAdd = x.querySelector('#btn-action-add');
+        const btnActionRemove = x.querySelector('#btn-action-remove');
+
+        x.style.borderStyle = 'dashed';
+
+        if (btnActionAdd) {
+            btnActionAdd.style.display = 'block';
+        }
+
+        if (btnActionRemove) {
+            btnActionRemove.style.display = 'block';
+        }
+    }
+
+    function outAdd(x){
+        const btnActionAdd = x.querySelector('#btn-action-add');
+        const btnActionRemove = x.querySelector('#btn-action-remove');
+
+        x.style.borderStyle = 'hidden';
+
+        if (btnActionAdd) {
+            btnActionAdd.style.display = 'none';
+        }
+
+        if (btnActionRemove) {
+            btnActionRemove.style.display = 'none';
+        }
+    }
+
+    function tempPlateButtonClick() {
+        let templateHolder = document.getElementById("templates-holder");
+        let b = document.getElementById("openholder-btn");
+
+        if (b.style.display === "block"){
+            b.style.display = "none"
+        }
+
+        if (templateHolder.style.display === "none") {
+            templateHolder.style.display = "block";
+        } 
+    }
+
+    function tempPlateCloseButtonClick(){
+        let x = document.getElementById("templates-holder");
+        let b = document.getElementById("openholder-btn");
+
+        if (b.style.display === "none"){
+            b.style.display = "block"
+        }
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } 
+    }
+</script>
 </html>
