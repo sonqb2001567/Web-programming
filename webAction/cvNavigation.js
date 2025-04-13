@@ -1,3 +1,3 @@
 template1.addEventListener("click", function (e) {
-    window.location.href = "http://localhost:8080/Web-programming/?page=Formcv";
+    window.location.href = "http://localhost/btl1/?page=Formcv";
 });
