@@ -73,191 +73,257 @@
     
     <main class="container mt-4">
 <!-- bộ currently template được admin đăng lên -->
-        <section>
-            <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
-            <form action="index.php" method="get">
-                <button class="btn btn-outline-primary mb-3"
-                    id="create_default" name="page" value="submitionForm">Create default</button>
-            </form>
-
-            <div class="d-flex flex-row row">
-<!-- tao moi -->
-                <button class="align-items-center justify-content-center custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">
-                    <div>
-                        <i class="fa-solid fa-plus img-fluid mb-2"></i>
-                        <br>
-                        <p class="small">Tạo mới</p>
-                    </div>
-                </button>
-<!-- template -->
-                <?php
-                    $sql = "
-                        SELECT *
-                        FROM template
-                        LIMIT $starter, $skip
-                    ";
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        // loop through each row
-                        while($row = $result->fetch_assoc()) {
-                            ?>
-                            <!-- html zone -->
-<!-- template -->
-                            <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
-                                <button class="custom-button3" id="<?php echo $row['template_id'];?>">
-                                    <div class="card">
-                                        <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
-                                        <div class="card-body">
-                                            <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
-                                            <p class="card-text small text-muted"><?php echo $row['date'];?></p>
-                                        </div>
-                                    </div>
-                                </button>
-                                <input type="hidden" name="page" value="Formcv">
-                                <input type="hidden" id="template_id" name="template_id" value="<?php echo $row['template_id'];?>">
-                            </form>
-<!-- template -->
-                            <!-- end html zone -->
-                            <?php
-                        // end while
-                        }
-                    // end if
-                    }
+        <?php
+            if(!isset($_GET['search_zone']) || $_GET['search_zone'] == ""){
                 ?>
+                    <section>
+                        <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
+                        <form action="index.php" method="get">
+                            <button class="btn btn-outline-primary mb-3"
+                                id="create_default" name="page" value="submitionForm">Create default</button>
+                        </form>
 
-<!-- template 1 -->
-                <!-- <button class="custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 mb-4" id="template1">
-                    <div class="card">
-                        <img src="https://storage.googleapis.com/a1aa/image/72Xs-wZ71b0V7jIqwHzCjgxosALytrA-AKd7r9fpiHc.jpg" alt="Template preview" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title small font-weight-bold">Template 1</h5>
-                            <p class="card-text small text-muted">1 thg 1, 2025</p>
+                        <div class="d-flex flex-row row">
+            <!-- tao moi -->
+                            <button class="align-items-center justify-content-center custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div>
+                                    <i class="fa-solid fa-plus img-fluid mb-2"></i>
+                                    <br>
+                                    <p class="small">Tạo mới</p>
+                                </div>
+                            </button>
+            <!-- template -->
+                            <?php
+                                $sql = "
+                                    SELECT *
+                                    FROM template
+                                    LIMIT $starter, $skip
+                                ";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // loop through each row
+                                    while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <!-- html zone -->
+            <!-- template -->
+                                        <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
+                                            <button class="custom-button3" id="<?php echo $row['template_id'];?>">
+                                                <div class="card">
+                                                    <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
+                                                        <p class="card-text small text-muted"><?php echo $row['date'];?></p>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <input type="hidden" name="page" value="Formcv">
+                                            <input type="hidden" id="template_id" name="template_id" value="<?php echo $row['template_id'];?>">
+                                        </form>
+            <!-- template -->
+                                        <!-- end html zone -->
+                                        <?php
+                                    // end while
+                                    }
+                                // end if
+                                }
+                            ?>
+
+            <!-- template 1 -->
+                            <!-- <button class="custom-button3 col-12 col-sm-6 col-md-4 col-lg-3 mb-4" id="template1">
+                                <div class="card">
+                                    <img src="https://storage.googleapis.com/a1aa/image/72Xs-wZ71b0V7jIqwHzCjgxosALytrA-AKd7r9fpiHc.jpg" alt="Template preview" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title small font-weight-bold">Template 1</h5>
+                                        <p class="card-text small text-muted">1 thg 1, 2025</p>
+                                    </div>
+                                </div>
+                            </button> -->
+                    
+                    </section>
+
+
+            <!-- pagination -->
+                    <div class="ms-3 mb-5" style="position: relative;">
+                        <section class="d-flex justify-content-center">
+                        <h4>Page: <?php echo $page_number?> of <?php echo $total_pages?> pages</h4>
+                        </section>
+                        <section>
+                            <div class="d-flex justify-content-center mt-4">
+                                <div class="d-flex flex-wrap">
+            <!-- lhs -->
+            <!-- go to first page -->
+                                    <form action="index.php" method="get">
+                                        <input type="hidden" name="page_number" value="1">
+                                        <input type="hidden" name="page" value="home">
+                                        <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
+                                            First
+                                        </button>
+                                    </form>
+            <!-- previous page -->
+                                    <?php
+                                        // class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block"
+                                        if(isset($_GET['page_number']) && $_GET['page_number']>1){
+                                    ?>
+                                            <form action="index.php" method="get">
+                                                <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']-1 ?>">
+                                                <input type="hidden" name="page" value="home">
+                                                <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
+                                                    <i class="fas fa-chevron-left mx-2"></i>
+                                                    Previous
+                                                </button>
+                                            </form>
+                                    <?php
+                                        } else {
+                                    ?>
+                                        <form action="index.php" method="get">
+                                            <input type="hidden" name="page_number" value="1">
+                                            <input type="hidden" name="page" value="home">
+                                            <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
+                                                <i class="fas fa-chevron-left mx-2"></i>
+                                                Previous
+                                            </button>
+                                        </form>
+                                    <?php
+                                        }
+                                    ?>
+            <!-- numbers of pages -->
+                                    <div id="pagination" class="btn-group ms-2 me-1" role="group">
+                                        <!-- <a href="#" class="btn btn-primary text-white">2</a> -->
+                                        <?php
+                                            for($i=1; $i<=$total_pages; $i++){
+                                        ?>
+                                            <!-- <a href="?page=anime&page_number=<?php echo $i?>" class=" btn btn-primary text-white"><?php echo $i?></a> -->
+                                            <form action="index.php" method="get">
+                                                <input type="hidden" name="page" value="home">
+                                                <input type="hidden" name="page_number" value="<?php echo $i?>">
+                                                <button type="submit" class="btn btn-primary text-white me-1"><?php echo $i?></button>
+                                            </form>
+                                        <?php
+                                            }
+                                        ?>
+                                    </div>
+            <!-- rhs -->
+            <!-- next page -->
+                                    <?php
+                                        if(!isset($_GET['page_number'])){
+                                        // <a class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block"
+                                    ?>
+                                        <form action="index.php" method="get">
+                                            <input type="hidden" name="page_number" value="2">
+                                            <input type="hidden" name="page" value="home">
+
+                                            <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
+                                                Next
+                                                <i class="fas fa-chevron-right mx-2"></i>
+                                            </button>
+                                        </form>
+                                    <?php
+                                        } else {
+                                            if ($_GET['page_number']<$total_pages){
+                                    ?>
+                                            <form action="index.php" method="get">
+                                                <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']+1 ?>">
+                                                <input type="hidden" name="page" value="home">
+                
+                                                <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
+                                                    Next
+                                                    <i class="fas fa-chevron-right mx-2"></i>
+                                                </button>
+                                            </form>
+                                    <?php
+                                            }else{
+                                    ?>        
+                                            <form action="index.php" method="get">
+                                                <input type="hidden" name="page_number" value="<?php echo $total_pages ?>">
+                                                <input type="hidden" name="page" value="home">
+                
+                                                <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
+                                                    Next
+                                                    <i class="fas fa-chevron-right mx-2"></i>
+                                                </button>
+                                            </form>                        
+                                    <?php
+                                            }
+                                        }
+                                    ?>
+            <!-- go to last page -->
+                                    <form action="index.php" method="get">
+                                        <input type="hidden" name="page_number" value="<?php echo $total_pages?>">
+                                        <input type="hidden" name="page" value="home">
+                
+                                        <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
+                                            Last
+                                        </button>
+                                    </form>
+                                </div>    
+                        </section>
                         </div>
                     </div>
-                </button> -->
-           
-        </section>
 
 
-<!-- pagination -->
-        <div class="ms-3 mb-5" style="position: relative;">
-            <section class="d-flex justify-content-center">
-            <h4>Page: <?php echo $page_number?> of <?php echo $total_pages?> pages</h4>
-            </section>
-            <section>
-                <div class="d-flex justify-content-center mt-4">
-                    <div class="d-flex flex-wrap">
-<!-- lhs -->
-<!-- go to first page -->
+                <?php
+            } else {
+                ?>
+                    <section min-height="200vh" class="flex-container mb-5">
+                        <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
                         <form action="index.php" method="get">
-                            <input type="hidden" name="page_number" value="1">
-                            <input type="hidden" name="page" value="home">
-                            <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
-                                First
-                            </button>
+                            <button class="btn btn-outline-primary mb-3"
+                                id="create_default" name="page" value="submitionForm">Create default</button>
                         </form>
-<!-- previous page -->
-                        <?php
-                            // class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block"
-                            if(isset($_GET['page_number']) && $_GET['page_number']>1){
-                        ?>
-                                <form action="index.php" method="get">
-                                    <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']-1 ?>">
-                                    <input type="hidden" name="page" value="home">
-                                    <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
-                                        <i class="fas fa-chevron-left mx-2"></i>
-                                        Previous
-                                    </button>
-                                </form>
-                        <?php
-                            } else {
-                        ?>
-                            <form action="index.php" method="get">
-                                <input type="hidden" name="page_number" value="1">
-                                <input type="hidden" name="page" value="home">
-                                <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
-                                    <i class="fas fa-chevron-left mx-2"></i>
-                                    Previous
-                                </button>
-                            </form>
-                        <?php
-                            }
-                        ?>
-<!-- numbers of pages -->
-                        <div id="pagination" class="btn-group ms-2 me-1" role="group">
-                            <!-- <a href="#" class="btn btn-primary text-white">2</a> -->
+
+                        <div class="d-flex flex-row row">
+            <!-- template -->
                             <?php
-                                for($i=1; $i<=$total_pages; $i++){
-                            ?>
-                                <!-- <a href="?page=anime&page_number=<?php echo $i?>" class=" btn btn-primary text-white"><?php echo $i?></a> -->
-                                <form action="index.php" method="get">
-                                    <input type="hidden" name="page" value="home">
-                                    <input type="hidden" name="page_number" value="<?php echo $i?>">
-                                    <button type="submit" class="btn btn-primary text-white me-1"><?php echo $i?></button>
-                                </form>
-                            <?php
+                                $sql = "
+                                    SELECT *
+                                    FROM template
+                                    WHERE name LIKE '%".$_GET['search_zone']."%'
+                                    OR date LIKE '%".$_GET['search_zone']."%'
+                                ";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // loop through each row
+                                    while($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <!-- html zone -->
+            <!-- template -->
+                                        <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
+                                            <button class="custom-button3" id="<?php echo $row['template_id'];?>">
+                                                <div class="card">
+                                                    <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
+                                                        <p class="card-text small text-muted"><?php echo $row['date'];?></p>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <input type="hidden" name="page" value="Formcv">
+                                            <input type="hidden" id="template_id" name="template_id" value="<?php echo $row['template_id'];?>">
+                                        </form>
+            <!-- template -->
+                                        <!-- end html zone -->
+                                        <?php
+                                    // end while
+                                    }
+                                // end if
+                                } else {
+                                    ?>
+                                        <div class="text-center">
+                                            <h2 style="color: red;">Nothing found</h2>
+                                            <h2 style="color: red;">Please try again</h2>
+                                            <img style="width: 200px; height: 200px;" src="https://media1.tenor.com/m/YaJVnr_0CZoAAAAd/anime-sad.gif" alt="sorry-image">
+                                        </div>
+                                    <?php
                                 }
                             ?>
-                        </div>
-<!-- rhs -->
-<!-- next page -->
-                        <?php
-                            if(!isset($_GET['page_number'])){
-                            // <a class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block"
-                        ?>
-                            <form action="index.php" method="get">
-                                <input type="hidden" name="page_number" value="2">
-                                <input type="hidden" name="page" value="home">
+                    </section>
+                <?php
 
-                                <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
-                                    Next
-                                    <i class="fas fa-chevron-right mx-2"></i>
-                                </button>
-                            </form>
-                        <?php
-                            } else {
-                                if ($_GET['page_number']<$total_pages){
-                        ?>
-                                <form action="index.php" method="get">
-                                    <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']+1 ?>">
-                                    <input type="hidden" name="page" value="home">
-    
-                                    <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
-                                        Next
-                                        <i class="fas fa-chevron-right mx-2"></i>
-                                    </button>
-                                </form>
-                        <?php
-                                }else{
-                        ?>        
-                                <form action="index.php" method="get">
-                                    <input type="hidden" name="page_number" value="<?php echo $total_pages ?>">
-                                    <input type="hidden" name="page" value="home">
-    
-                                    <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
-                                        Next
-                                        <i class="fas fa-chevron-right mx-2"></i>
-                                    </button>
-                                </form>                        
-                        <?php
-                                }
-                            }
-                        ?>
-<!-- go to last page -->
-                        <form action="index.php" method="get">
-                            <input type="hidden" name="page_number" value="<?php echo $total_pages?>">
-                            <input type="hidden" name="page" value="home">
-    
-                            <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
-                                Last
-                            </button>
-                        </form>
-                    </div>    
-            </section>
-            </div>
-        </div>
-
+                
+            }
+        ?>
 
 
 

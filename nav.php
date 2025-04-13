@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="d-flex flex-row sticky-top justify-content-between p-2 shadow-sm" style="background-color: rgb(242, 244, 245);">
+<div class="d-flex flex-row sticky-top justify-content-between p-2 shadow-sm" style="background-color: rgb(242, 244, 245);">
         <!-- bar icon -->
         <div class="d-inline-flex align-items-center">
             <button type="button" class="custom-button btn btn-link text-dark mr-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -39,9 +31,13 @@
         <!-- hidden bar end -->
         
         <!-- search bar -->
-        <form action="" class="custom-search-bar d-flex align-items-center form-control rounded-pill w-50">
-            <span class="fa-solid fa-magnifying-glass"></span>
-            <input type="text" class="custom-tim-kiem" placeholder="Tìm kiếm">
+        <form action="index.php" method="get" class="custom-search-bar d-flex align-items-center rounded-pill w-50">
+            <span class="fa-solid fa-magnifying-glass ms-2"></span>
+            <input
+                type="text" name="search_zone" id="search_zone"
+                class="custom-tim-kiem border-0 flex-grow-1 rounded-pill"
+                placeholder="Tìm kiếm"
+            >
         </form>
         <!-- user avatar -->
         <div class="ml-3">
@@ -49,5 +45,3 @@
             <img src="https://storage.googleapis.com/a1aa/image/c6PvQ9PPnRYpm1iDHFMjd2U2SQnj6Of8HK_E7sOi04s.jpg" alt="User avatar" class="rounded-circle" width="40" height="40">
         </div>
     </div>
-</body>
-</html>
