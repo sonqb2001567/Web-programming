@@ -2,7 +2,7 @@
 @session_start();
 
 // Kết nối cơ sở dữ liệu (dùng lại từ login.php)
-$svname = "localhost:3308";
+$svname = "localhost:3306";
 $user_svname = "root";
 $sv_password = "";
 $sv_dbname = "mycvdatabase";

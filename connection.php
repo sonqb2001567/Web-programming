@@ -1,6 +1,6 @@
 <?php
     // connect to database
-    $svname = "localhost:8080";
+    $svname = "localhost:3306";
     $user_svname = "root"; // Default XAMPP username
     $sv_password = ""; // Default XAMPP password
     $sv_dbname = "mycvdatabase";
