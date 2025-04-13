@@ -34,11 +34,12 @@
     </style>
 </head>
 
-<body class="bg-light d-flex justify-content-center position-relative" > <!--back-ground-->
+<body id="cv-content" class="bg-light d-flex justify-content-center position-relative" > <!--back-ground-->
     <?php include('templateHolder.php');?> 
     <?php include('cvtemplate_1.php');?>
-    <form id="save-form" method="POST" action="save_page.php" class="d-flex flex-row justify-content-center m-0 p-0  w-100">
-            
+    
+    <form id="save-form" method="POST" action="save_page.php" class="d-none">
+        <textarea id="page_content" name="page_content" class="d-none"></textarea>
     </form>
     <div class="btn btn-success position-fixed bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
 </body>
@@ -100,7 +101,7 @@
     }
 
     function submitClick() {
-        const content = document.getElementById("save-form").outerHTML;
+        const content = document.getElementById("cv-content").outerHTML;
         document.getElementById("page_content").value = content;
         document.getElementById("save-form").submit();
     }
