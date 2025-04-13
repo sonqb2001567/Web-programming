@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Nếu không tìm thấy tài khoản
-        $error = "Email hoặc mật khẩu không đúng.";
+    $error = "Email hoặc mật khẩu không đúng.";
 
     $stmt_admin->close();
     $stmt_user->close();
