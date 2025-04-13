@@ -2,11 +2,8 @@
 @session_start();
 
 // Kết nối cơ sở dữ liệu
-<<<<<<< HEAD
+
 $svname = "localhost:3306"; // Cổng MySQL (thử 8080 hoặc 3306 nếu không hoạt động)
-=======
-$svname = "localhost:3308"; // Cổng MySQL từ hình ảnh
->>>>>>> origin/tson
 $user_svname = "root";
 $sv_password = "";
 $sv_dbname = "mycvdatabase";
