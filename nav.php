@@ -4,7 +4,8 @@
             <button type="button" class="custom-button btn btn-link text-dark mr-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <h1 class="h5 text-primary mb-0 ml-3">GROUP 5</h1>
+            <a class="h5 text-primary mb-0 ml-3" style="text-decoration: none;" href="index.php?page=home">GROUP 5</a>
+            <!-- <h1 class="h5 text-primary mb-0 ml-3">GROUP 5</h1> -->
         </div>
         <!-- hidden bar -->
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
