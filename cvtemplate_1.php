@@ -40,7 +40,7 @@ $stmt->close();
 $conn->close();
 ?>
 
-<div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row"> <!--cv-form-->
+<div id="cv-form" class="mt-4 mb-4 bg-white d-flex flex-row align-self-center"> <!--cv-form-->
     <div class="bg-secondary text-white w-50">  <!--Additional infor-->
         
         <img class="mt-2 ms-5" src=<?php echo $cvContent_picture?> alt="ava photo" width="150px" height="150px" style="border-radius: 50%;">

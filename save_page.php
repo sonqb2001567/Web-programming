@@ -1,11 +1,16 @@
 <?php
+    @session_start();
+
     include("connection.php");
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $page_content = isset($_POST['page_content']) ? $_POST['page_content'] : 'Fail to add Content';
         $name = $_POST['cv_name'] ?? 'Untitled CV';
         $template_id = $_POST['template_id'] ?? 1; // Example default
-        $user_id = $_POST['user_id'] ?? 1;         // Example default (should come from session ideally)
+        $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
+        $userSQL = "SELECT user_id FROM user WHERE email = $email LIMIT 1;";
+        $user_id_row = $conn->query($userSQL)->fetch_assoc();      
+        $user_id = $user_id_row['user_id'];
         $date_cv = date('Y-m-d'); // current date
         
         $cvInsertSql = "INSERT INTO cv (name, DATE_CV, template_id, user_id)
@@ -48,6 +53,5 @@
         window.location.href = 'http://localhost:8080/Web-programming/index.php?page=submitionForm';
       </script>";
     }
-
 
 ?>

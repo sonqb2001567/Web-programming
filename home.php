@@ -163,6 +163,7 @@ if (isset($_POST['trash_button'])) {
                                     </div>
                                 </button>
                                 <input type="hidden" name="page" value="Formcv">
+                                <input type="hidden" name="template_id" value="<?php echo $row['template_id'];?>">
                                 <input type="hidden" name="cv_content_id" value="<?php echo $cv_content_id;?>">
                             </form>
                             <?php
