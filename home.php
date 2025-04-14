@@ -5,7 +5,7 @@
 $svname = "localhost:3308";
 $user_svname = "root";
 $sv_password = "";
-$sv_dbname = "mycvdatabase";
+$sv_dbname = "MyCVDatabase";
 
 $conn = new mysqli($svname, $user_svname, $sv_password, $sv_dbname);
 
@@ -49,11 +49,14 @@ if (isset($_POST['trash_button'])) {
 }
 ?>
 
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTL web</title>
+    <title>Trang chủ - MyCV</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Thanh điều hướng -->
@@ -71,11 +74,11 @@ if (isset($_POST['trash_button'])) {
             </div>
             <div class="offcanvas-body">
                 <?php if (isset($_SESSION['user_type'])) { ?>
-                    <p>Welcome, <?php echo htmlspecialchars($_SESSION['user_type'] === 'admin' ? $_SESSION['admin_name'] : $_SESSION['user_name']); ?>!</p>
-                    <a href="logout.php" class="btn btn-danger">Logout</a>
+                    <p>Xin chào, <?php echo htmlspecialchars($_SESSION['user_type'] === 'admin' ? $_SESSION['admin_name'] : $_SESSION['user_name']); ?>!</p>
+                    <a href="logout.php" class="btn btn-danger">Đăng xuất</a>
                 <?php } else { ?>
-                    <p>Welcome, Guest!</p>
-                    <a href="login.php" class="btn btn-primary">Login</a>
+                    <p>Xin chào, Khách!</p>
+                    <a href="login.php" class="btn btn-primary">Đăng nhập</a>
                 <?php } ?>
             </div>
         </div>
@@ -85,7 +88,7 @@ if (isset($_POST['trash_button'])) {
             <input type="hidden" name="page" value="home">
         </form>
         <div class="ml-3">
-            <img src="https://storage.googleapis.com/a1aa/image/c6PvQ9PPnRYpm1iDHFMjd2U2SQnj6Of8HK_E7sOi04s.jpg" alt="User avatar" class="rounded-circle" width="40" height="40">
+            <img src="https://storage.googleapis.com/a1aa/image/c6PvQ9PPnRYpm1iDHFMjd2U2SQnj6Of8HK_E7sOi04s.jpg" alt="Ảnh đại diện người dùng" class="rounded-circle" width="40" height="40">
         </div>
     </div>
 
@@ -121,8 +124,8 @@ if (isset($_POST['trash_button'])) {
                                     </form>
                                     <form action="index.php" method="get">
                                         <button class="custom-button2">
-                                            <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
-                                            <p class="small"><?php echo $row['Name'];?></p>
+                                            <img src="<?php echo $row['picture'];?>" alt="Ảnh CV" class="img-fluid mb-2 customer-image">
+                                            <p class="small"><?php echo htmlspecialchars($row['Name']);?></p>
                                         </button>
                                         <input type="hidden" name="page" value="Formcv">
                                         <input type="hidden" name="cv_id" value="<?php echo $row['ID'];?>">
@@ -147,7 +150,7 @@ if (isset($_POST['trash_button'])) {
                 <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
                 <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'user') { ?>
                     <form action="index.php" method="get">
-                        <button class="btn btn-outline-primary mb-3" id="create_default" name="page" value="submitionForm">Create default</button>
+                        <button class="btn btn-outline-primary mb-3" id="create_default" name="page" value="submitionForm">Tạo CV mặc định</button>
                     </form>
                 <?php } ?>
 
@@ -163,25 +166,34 @@ if (isset($_POST['trash_button'])) {
                     <?php } ?>
                     <?php
                     $sql = "
-                        SELECT t.*, c.ID as cv_id, cc.cv_content_id
+                        SELECT t.*, c.ID as cv_id,
+                            (SELECT cc.cv_content_id 
+                             FROM cv_content cc 
+                             WHERE cc.cv_id = c.ID 
+                             AND cc.cv_content_id > 3 
+                             LIMIT 1) as priority_cv_content_id,
+                            (SELECT cc.cv_content_id 
+                             FROM cv_content cc 
+                             WHERE cc.cv_id = c.ID 
+                             AND cc.cv_content_id <= 3 
+                             LIMIT 1) as fallback_cv_content_id
                         FROM template t
                         LEFT JOIN cv c ON c.template_id = t.template_id
-                        LEFT JOIN cv_content cc ON cc.cv_id = c.ID
                         LIMIT $starter, $skip
                     ";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            $cv_content_id = $row['cv_content_id'] ?? 0; // 0 for new CV
+                            $cv_content_id = $row['priority_cv_content_id'] ?? $row['fallback_cv_content_id'] ?? 0;
                             $template_id = $row['template_id'];
                             ?>
                             <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
                                 <button class="custom-button3" id="<?php echo $template_id;?>">
                                     <div class="card">
-                                        <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
+                                        <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Ảnh xem trước mẫu" class="card-img-top">
                                         <div class="card-body">
-                                            <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
+                                            <h5 class="card-title small font-weight-bold"><?php echo htmlspecialchars($row['name']);?></h5>
                                             <p class="card-text small text-muted"><?php echo $row['date'];?></p>
                                         </div>
                                     </div>
@@ -199,7 +211,7 @@ if (isset($_POST['trash_button'])) {
 
             <div class="ms-3 mb-5" style="position: relative;">
                 <section class="d-flex justify-content-center">
-                    <h4>Page: <?php echo $page_number?> of <?php echo $total_pages?> pages</h4>
+                    <h4>Trang: <?php echo $page_number?> / <?php echo $total_pages?> trang</h4>
                 </section>
                 <section>
                     <div class="d-flex justify-content-center mt-4">
@@ -208,7 +220,7 @@ if (isset($_POST['trash_button'])) {
                                 <input type="hidden" name="page_number" value="1">
                                 <input type="hidden" name="page" value="home">
                                 <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
-                                    First
+                                    Đầu tiên
                                 </button>
                             </form>
                             <?php
@@ -219,7 +231,7 @@ if (isset($_POST['trash_button'])) {
                                     <input type="hidden" name="page" value="home">
                                     <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
                                         <i class="fas fa-chevron-left mx-2"></i>
-                                        Previous
+                                        Trước
                                     </button>
                                 </form>
                             <?php
@@ -230,7 +242,7 @@ if (isset($_POST['trash_button'])) {
                                     <input type="hidden" name="page" value="home">
                                     <button type="submit" class="btn btn-primary text-white d-flex align-items-center ms-1 d-none d-md-inline-block">
                                         <i class="fas fa-chevron-left mx-2"></i>
-                                        Previous
+                                        Trước
                                     </button>
                                 </form>
                             <?php
@@ -256,7 +268,7 @@ if (isset($_POST['trash_button'])) {
                                     <input type="hidden" name="page_number" value="2">
                                     <input type="hidden" name="page" value="home">
                                     <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
-                                        Next
+                                        Tiếp
                                         <i class="fas fa-chevron-right mx-2"></i>
                                     </button>
                                 </form>
@@ -268,7 +280,7 @@ if (isset($_POST['trash_button'])) {
                                         <input type="hidden" name="page_number" value="<?php echo $_GET['page_number']+1 ?>">
                                         <input type="hidden" name="page" value="home">
                                         <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
-                                            Next
+                                            Tiếp
                                             <i class="fas fa-chevron-right mx-2"></i>
                                         </button>
                                     </form>
@@ -279,7 +291,7 @@ if (isset($_POST['trash_button'])) {
                                         <input type="hidden" name="page_number" value="<?php echo $total_pages ?>">
                                         <input type="hidden" name="page" value="home">
                                         <button type="submit" class="btn btn-primary text-white d-flex align-items-center me-1 d-none d-md-inline-block">
-                                            Next
+                                            Tiếp
                                             <i class="fas fa-chevron-right mx-2"></i>
                                         </button>
                                     </form>
@@ -291,7 +303,7 @@ if (isset($_POST['trash_button'])) {
                                 <input type="hidden" name="page_number" value="<?php echo $total_pages?>">
                                 <input type="hidden" name="page" value="home">
                                 <button type="submit" class="btn btn-primary text-white d-flex align-items-center">
-                                    Last
+                                    Cuối cùng
                                 </button>
                             </form>
                         </div>
@@ -303,7 +315,7 @@ if (isset($_POST['trash_button'])) {
                 <h2 class="h6 font-weight-bold mb-3">CV mẫu:</h2>
                 <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') { ?>
                     <form action="index.php" method="get">
-                        <button class="btn btn-outline-primary mb-3" id="create_default" name="page" value="submitionForm">Create default</button>
+                        <button class="btn btn-outline-primary mb-3" id="create_default" name="page" value="submitionForm">Tạo CV mặc định</button>
                     </form>
                 <?php } ?>
 
@@ -318,27 +330,40 @@ if (isset($_POST['trash_button'])) {
                         </button>
                     <?php } ?>
                     <?php
+                    $search_term = '%' . $_GET['search_zone'] . '%';
                     $sql = "
-                        SELECT t.*, c.ID as cv_id, cc.cv_content_id
+                        SELECT t.*, c.ID as cv_id,
+                            (SELECT cc.cv_content_id 
+                             FROM cv_content cc 
+                             WHERE cc.cv_id = c.ID 
+                             AND cc.cv_content_id > 3 
+                             LIMIT 1) as priority_cv_content_id,
+                            (SELECT cc.cv_content_id 
+                             FROM cv_content cc 
+                             WHERE cc.cv_id = c.ID 
+                             AND cc.cv_content_id <= 3 
+                             LIMIT 1) as fallback_cv_content_id
                         FROM template t
                         LEFT JOIN cv c ON c.template_id = t.template_id
-                        LEFT JOIN cv_content cc ON cc.cv_id = c.ID
-                        WHERE t.name LIKE '%".$_GET['search_zone']."%'
-                        OR t.date LIKE '%".$_GET['search_zone']."%'
+                        WHERE t.name LIKE ?
+                        OR t.date LIKE ?
                     ";
-                    $result = $conn->query($sql);
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ss", $search_term, $search_term);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            $cv_content_id = $row['cv_content_id'] ?? 0;
+                            $cv_content_id = $row['priority_cv_content_id'] ?? $row['fallback_cv_content_id'] ?? 0;
                             $template_id = $row['template_id'];
                             ?>
                             <form class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" action="index.php" method="get">
                                 <button class="custom-button3" id="<?php echo $template_id;?>">
                                     <div class="card">
-                                        <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Template preview" class="card-img-top">
+                                        <img loading="lazy" src="<?php echo $row['picture'];?>" alt="Ảnh xem trước mẫu" class="card-img-top">
                                         <div class="card-body">
-                                            <h5 class="card-title small font-weight-bold"><?php echo $row['name'];?></h5>
+                                            <h5 class="card-title small font-weight-bold"><?php echo htmlspecialchars($row['name']);?></h5>
                                             <p class="card-text small text-muted"><?php echo $row['date'];?></p>
                                         </div>
                                     </div>
@@ -352,12 +377,13 @@ if (isset($_POST['trash_button'])) {
                     } else {
                         ?>
                         <div class="text-center">
-                            <h2 style="color: red;">Nothing found</h2>
-                            <h2 style="color: red;">Please try again</h2>
-                            <img style="width: 200px; height: 200px;" src="https://media1.tenor.com/m/YaJVnr_0CZoAAAAd/anime-sad.gif" alt="sorry-image">
+                            <h2 style="color: red;">Không tìm thấy kết quả</h2>
+                            <h2 style="color: red;">Vui lòng thử lại</h2>
+                            <img style="width: 200px; height: 200px;" src="https://media1.tenor.com/m/YaJVnr_0CZoAAAAd/anime-sad.gif" alt="Hình ảnh xin lỗi">
                         </div>
                         <?php
                     }
+                    $stmt->close();
                     ?>
             </section>
         <?php } ?>
