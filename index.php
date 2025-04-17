@@ -20,11 +20,12 @@
     // calculate number of pages, ceil for round up
     $total_pages = ceil($total_rows/$skip);
     
-    if (isset($_GET['cvid'])){
-        $cv_id = $_GET['cvid'];
-        echo "window.location.href = 'http://localhost/Web-programming/CV_" . $_GET . ".php';";
+    if (isset($_GET['cv_id'])){
+        $cv_id = $_GET['cv_id'];
+        echo "<script> window.location.href = 'http://localhost/Web-programming/CV_" . $cv_id. ".php'; <script>";
         exit();
     }
+    
     // get the current page number
     $page_number = 1;
     if (isset($_GET['page_number'])) {

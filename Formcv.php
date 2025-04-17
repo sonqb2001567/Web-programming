@@ -48,7 +48,13 @@
             $cv_content_id = isset($_GET['cv_content_id']) ? (int)$_GET['cv_content_id'] : 2; // Mặc định là 2 nếu không có
         ?>
         
-        <?php $link ='cvtemplate_'.$_GET['template_id'].'.php';  include($link);?>
+        <?php
+            if (isset($_GET['template_id'])) {
+                $link ='cvtemplate_'.$_GET['template_id'].'.php';  
+                include($link);
+            } 
+            
+        ?>
 
         <form id="save-form" method="POST" action="save_page.php" class="d-none">
             <input id="cv_name" nameid="cv_name" class="d-none">
@@ -58,6 +64,7 @@
         <div class="position-fixed d-flex flex-column bottom-0 end-0 m-3">
             <div class="btn btn-success bottom-0 end-0 m-3" onclick="submitClick()"> Submit</div>
             <div class="btn btn-success bottom-0 end-0 m-3" onclick="copyLinkClick()"> Copy link</div> 
+            <div class="btn btn-success bottom-0 end-0 m-3" onclick="homeClick()"> Home </div> 
         </div >
     </div>    
 </body>
@@ -131,6 +138,10 @@
     function copyLinkClick() {
         const link = window.location.href; 
         navigator.clipboard.writeText(link)
+    }
+
+    function homeClick() {
+        window.location.href = 'http://localhost:8080/Web-programming/index.php?page=home';
     }
 </script>
 </html>

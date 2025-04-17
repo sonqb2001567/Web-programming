@@ -102,10 +102,15 @@ if (isset($_POST['trash_button'])) {
                                             <i class="fa-solid fa-trash" style="color: red;"></i>
                                         </button>
                                     </form>
-                                    <button class="custom-button2">
-                                        <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
-                                        <p class="small"><?php echo $row['Name'];?></p>
-                                    </button>
+                                    <form action="index.php" method="get">
+                                        <button class="custom-button2">
+                                            <img src="<?php echo $row['picture'];?>" alt="a CV" class="img-fluid mb-2 customer-image">
+                                            <p class="small"><?php echo $row['Name'];?></p>
+                                        </button>
+                                        <input type="hidden" name="page" value="Formcv">
+                                        <input type="hidden" name="cv_id" value="<?php echo $row['ID'];?>">
+                                    </form>
+                                    
                                 </div>
                                 <?php
                             }
