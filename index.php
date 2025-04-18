@@ -3,7 +3,11 @@
     
     include("connection.php");
 
-
+    if (isset($_GET['cv_id'])){
+        $cv_id = $_GET['cv_id'];
+        echo "<script> window.location.href = 'http://localhost:8080/Web-programming/" . $cv_id . "'; </script>";
+        exit();
+    }
 
     #$page = $_GET['page']
     // lay page type
@@ -19,12 +23,6 @@
 
     // calculate number of pages, ceil for round up
     $total_pages = ceil($total_rows/$skip);
-    
-    if (isset($_GET['cv_id'])){
-        $cv_id = $_GET['cv_id'];
-        echo "<script> window.location.href = 'http://localhost/Web-programming/CV_" . $cv_id. ".php'; <script>";
-        exit();
-    }
     
     // get the current page number
     $page_number = 1;
@@ -59,7 +57,6 @@
         } else {
             include("404.html");
         }
-    
     ?>
 
 

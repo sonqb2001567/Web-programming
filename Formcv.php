@@ -141,7 +141,7 @@
     }
 
     function homeClick() {
-        window.location.href = 'http://localhost:8080/Web-programming/index.php?page=home';
+        window.location.href = 'http://localhost:8080/Web-programming/home';
     }
 </script>
 </html>

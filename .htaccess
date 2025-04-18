@@ -1,0 +1,15 @@
+RewriteEngine On
+Options -Indexes
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Handle the root URL (e.g., /Web-programming/)
+RewriteRule ^$ index.php [L,QSA]
+
+RewriteRule ^home$ index.php?page=home [L,QSA]
+
+RewriteRule ^login$ index.php?page=login [L,QSA]
+
+# Handle URLs like /Web-programming/14
+RewriteRule ^([0-9]+)$ CV_$1.php [L,QSA]
